@@ -1,0 +1,36 @@
+PDF : Its is the way of representing variables along with its probbaility.
+Here, X is event    P(X = x) -> Probability Density function.
+
+Example 01 :
+
+Toss a fair Coin
+
+Rx = {1,0}
+
+** Rx = Range of random variable
+
+Lets say we need to calculate probability of random varible takes 1 P(X =1)
+i.e observing a head . in fair coin getting the head and tal has the equivalent property.
+so, P(X = 1)= P(X = 0) = 1/2 = 0.5
+
+
+Example 02 : Tossing Two fair coins, Lets X be the number of heads.
+
+Sample space(S) = {(HH),(TT),(HT),(TH)}
+
+1 = Head; 0 = Tail
+
+P(X = 0) means probbaility of outcome of the events where no heads in the sample space
+P(X = 1) means probbaility of outcome of the events where 1 heads in the sample space
+P(X = 2) means probbaility of outcome of the events where 2 heads in the sample space
+
+P(X = 0 no head) = {TT} = 1/4 = 0.25
+P(X = 1 head) = {(HT),(TH)} = 2/4 = 0.5
+P(X = 2 head) = (HH) =  1/4 = 0.25
+
+Always total probbaility is equal to 1
+i.e    P(X =0) + P( X = 1) + P(x = 2) = 1
+       0.25 + 0.25 + 0.5 = 1
+
+
+

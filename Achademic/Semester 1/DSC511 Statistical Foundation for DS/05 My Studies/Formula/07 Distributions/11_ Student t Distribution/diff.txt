@@ -1,0 +1,15 @@
+The t-distribution is similar to a normal distribution. It has a precise mathematical definition. Instead of diving into complex math, let’s look at the useful properties of the t-distribution and why it is important in analyses.
+
+Like the normal distribution, the t-distribution has a smooth shape.
+
+Like the normal distribution, the t-distribution is symmetric. If you think about folding it in half at the mean, each side will be the same.
+
+Like a standard normal distribution (or z-distribution), the t-distribution has a mean of zero.
+
+The normal distribution assumes that the population standard deviation is known. The t-distribution does not make this assumption.
+
+The t-distribution is defined by the degrees of freedom. These are related to the sample size.
+
+The t-distribution is most useful for small sample sizes, when the population standard deviation is not known, or both.
+
+As the sample size increases, the t-distribution becomes more similar to a normal distribution.

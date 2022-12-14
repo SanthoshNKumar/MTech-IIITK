@@ -1,0 +1,81 @@
+Permutation : Orders Matters 
+
+Combination : Orders Does't Matters 
+
+Types of Permutation
+	1. Permutations with Repetition
+	2. Permutations Without Repetition 
+
+Example for Permutation:
+	1. Arrangement of people, digits, numbers, alphabets, letters, and colours etc.
+	2. Picking a team captain or keeper and a particular one from a group.
+	3. Picking two favourite colours, in order, from a colour book.
+	4. Picking first, second and third prize winners.
+
+Example for Combinations:
+	1. Selections of the menu, food, clothes, subjects, team etc.
+	2. Picking three team members from a group.
+	3. Picking two colours from a colour book.
+	4. Picking three winners only.
+
+
+***********************************************************************************
+Example : 
+In a Group of 6 Boys and 4 Girls, four Childern are to be selected, in how many diffeent ways can they be 
+selected such that at lease one boby should be there?
+
+6 Boys
+4 Girls
+
+Total 10
+
+E : Found childern are selected, atlease one boy should be there
+
+(4 Childers) = (bggg) + (bbgg) + (bbbg) + (bbbb)
+
+	     = (6C1 * 4C3 ) + (6C2 * 4C2) + (6C3 * 4C1) + (6C2)
+
+	     = 209
+
+***********************************************************************************
+Example 2:
+A box contains 2 white balls 3 black balls and 4 red balls , in how many way can 3 balls be drawn from the box, 
+if one black ball is to be included in the drawn?
+
+white balls : 2
+Black balls : 3
+red balls : 4
+
+So, Non black balls = 6
+
+E : 3 balls drawn,Atleast one ball is balck
+
+E = (1 Black, 2 non black), (2 Black,1 non Black),(3 lack)
+
+  = (1C3 * 6C2) + (3C2 * 6C1) + (3C3)
+  = 64
+
+*************************************************************************************
+A Box contains 15 items of which 5 are defective, if 3 items are drawn at randome. 
+
+find the probability that all three are defective
+
+15 Items ---> 5 Defective
+drawn = 3 Items
+
+Total outcome = 15C3
+Favourable Outcome = 5C3
+
+P(getting all three defective) = 5C3 / 15C3
+
+
+************************************************************************************
+
+In a party of 5 persons compute the probability that at least 2 have the same birthday(month/day),assume a 365-day year.
+
+
+
+
+
+
+

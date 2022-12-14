@@ -1,0 +1,124 @@
+So far on Statistical Foundation Class
+
+Set
+Ven Diagram
+Union
+Intersection
+Complement
+Mutually Exclusive or Disjoint Sets
+De Morgan’s Law
+Distributive law
+Cardinality
+Countable and Uncountable Sets
+Random Experiments
+Sample Space
+Event 
+Outcome
+Types of Events
+	- Union
+	- Intersection
+Probability
+Axioms of Probability
+Inclusion-Exclusion Principle
+Discrete Probability Models
+Joint Probability
+Marginal Probability
+Conditional Probability
+Chain Rule for Conditional Probability
+Law of Total Probability
+Multiplication law for Probability
+	- Two Independent Events
+Posterior Probability
+Bayes Rule
+Permutation and Combination
+Inclusion-Exclusion Principle
+Random Variables
+Discrete Random variable
+Continuous Random vaiable
+Probability Distribution Function
+Cumulative Distribution Function
+Random Variable
+	- Discrete Rv   (PMF)
+	- Continuous Rv (PDF)
+
+Mean and Variance of Random Variable
+Summarizing Random Variables
+	- Mean
+	- Variances
+	- Standard Deviations
+
+The variance of a discrete random variable
+Geometric Distribution
+	- PDF and CDF for Geometric Distribution
+	- Mean of geometric distribution
+	- Variance of the geometric distribution
+Mean of geometric distribution:
+MARKOV PROPERTY
+Binomial Condition
+Binomial Distribution
+	- PDF and CDF for Binomial Distribution
+	- Mean of the Binomial Distribution
+	- Variance of the Binomial Distribution
+
+Hypergeometric Distribution
+	- PDF and CDF for Hypergeometric Distribution
+	- Mean of the Hypergeometric Distribution
+	- Variance of the Hypergeometric Distribution
+
+Difference between Binomial and Hypergeometric
+
+Poisson Distribution
+	- PDF and CDF for Poisson Distribution
+
+Continuous Distribution
+	- PDF and CDF for Continuous Distribution
+
+Exponential Distribution
+	- PDF and CDF for Exponential Distribution
+	- Mean of the Exponential Distribution
+	- Variance of the Exponential Distribution
+
+Normal Distribution
+	- PDF and CDF for Normal Distribution
+	- Mean of the Normal Distribution
+	- Variance of the Normal Distribution 
+
+Standard Normal Distribution
+
+Continuous Uniform Distribution
+
+How to Read the Area table
+
+Normal Approximation to Binominal Distribution
+
+Central Limit theorem
+
+Statistical Inference 	
+	- Parameter Estimation
+		-- Post Estimation
+			- point Estimation
+			- Interval Estimation(Confidence Intervals)
+	- Hypothesis Estimation
+
+A Population
+A Sample
+Variability Measures of a Sample
+Sample Variance
+Sample Standard Deviation
+Sample range
+Degree of Freedom
+Sampling Distribution of the Sample Mean
+Central Limit theorem
+Sampling Distribution
+Student t - Distribution
+Post Estimation
+	- Moment Method(MM)
+	- Maximum Likelihood Method(MM)
+		- Poisson Distribution
+		- Exponential Distribution
+		- Normal Distribution
+Confidence interval
+	- Confidence interval on mean of a normal distribution with Variance known (mean (µ),σ2 known)
+	- One Sided Confidence Bounds
+	- Confidence interval for mean (µ) when σ2 is unknown
+	- Large Sample Confidence Interval

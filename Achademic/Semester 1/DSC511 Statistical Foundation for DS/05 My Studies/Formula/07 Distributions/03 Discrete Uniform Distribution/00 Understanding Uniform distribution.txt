@@ -1,0 +1,3 @@
+Uniform Distribution: Data is said to be uniformly distributed if the probability of events is equal.  
+
+For example: Events in throw of a dice or flipping a coin have equal probabilities. 

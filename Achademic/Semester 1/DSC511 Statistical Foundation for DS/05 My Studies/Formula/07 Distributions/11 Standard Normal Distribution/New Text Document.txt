@@ -1,0 +1,4 @@
+Here, Mean i always 0 and Standard Deviation is 1.
+
+Each number on the horizontal axes corresponfing to 1 is called z score, z score tells about how many standard deviation of observation from the mean.
+Z scores allows us to calculate how much area associates with. we can find that exact by using z-score table or standard nsormal table.

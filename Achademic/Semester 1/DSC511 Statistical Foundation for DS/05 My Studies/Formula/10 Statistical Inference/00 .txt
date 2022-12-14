@@ -1,0 +1,11 @@
+Point Estimation :  Use of sample data to calculate a single value which is to serve as a "best guess" or "best estimate" of an unknown population parameter.
+
+Types:
+  1. Moment Method (MM)
+  2. Maximum Likelihood Method(MLE)
+
+Moment Method(MM) :
+	- It is a general method where equations for estimating parameters are found by equating population moments with the corresponding sample moments.
+
+Maximum Likelihood Method
+	- 

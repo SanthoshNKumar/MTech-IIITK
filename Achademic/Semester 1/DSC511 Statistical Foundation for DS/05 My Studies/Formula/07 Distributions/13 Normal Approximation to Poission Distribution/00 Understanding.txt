@@ -1,0 +1,5 @@
+Why Normal Approximation to Poission Distribution
+	- In Poission distribution formula, the parameter lambda, if the lambda is greater than 20, the poission 
+          distribution can be approximated to normal distribution with mean is equal to lambda and variance equal to lambda.
+
+	- Changing discrete distribution to continuous distribution requires continuity factor(+0.5 or -0.5)

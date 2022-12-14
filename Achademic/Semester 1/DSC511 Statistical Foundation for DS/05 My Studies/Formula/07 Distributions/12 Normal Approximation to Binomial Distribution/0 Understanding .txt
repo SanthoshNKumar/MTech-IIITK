@@ -1,0 +1,12 @@
+Why Normal Approximation to Binominal Distribution
+- If we look at the binominal probability formula where n is the number of trails.
+  when n becomes large, calculations are difficult.
+  Ex: Probability of 59 successes in 200 trails, here factorical computation is huge.
+  In this kind of situation we can use normal distribution as an approximation to calculate probability.
+
+Conditionss much satisfy
+	- Must see 4 requirements of binominal distribution
+	- n*p >/ 5 and n*q >/5
+		ex: n = 12; p =0.3, and n*p = 3.6 , so do not use normal distribution
+	- if 1 and 2 of above met, then a correction for continuity must be applied
+	- 

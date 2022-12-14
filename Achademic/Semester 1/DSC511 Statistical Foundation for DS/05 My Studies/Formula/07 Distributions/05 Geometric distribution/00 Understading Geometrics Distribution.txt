@@ -1,0 +1,14 @@
+Probability distribution of number X for the n trails performed until a first success occurs.
+
+The number of times a Bernoulli trial needs to be conducted in order to get the first success after a consecutive number of failures.
+
+Ex: 
+1. Probability of getting 1st head in 7th attempt during tossing a coin repeatedly.
+2. Tossing a coin repeatedly until the first head appears
+3. Shot the target until it hits
+4. Give the test until he will pass it.
+5. Throwing a die repeatedly until first time a six appears
+
+ 
+
+

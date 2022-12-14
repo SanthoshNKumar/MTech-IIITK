@@ -1,0 +1,7 @@
+The Bernoulli distribution therefore describes events having exactly two outcomes.
+
+Here, An experiment consists of only 2 possible outcomes
+ex: Success and Failure; Yes or No; Head or Tail
+
+
+Example : If you flip a coin 100 times to see how many heads you get, then the Success is getting heads and a Failure is getting tails.

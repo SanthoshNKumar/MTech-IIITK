@@ -1,0 +1,8 @@
+Also called as 'bivariate probability distribution.'
+
+If X and Y are two random variables, then the probability of their simultaneous occurrence can be represented as a 
+function called a Joint Probability Distribution or Bivariate Distribution.
+
+Why Joint probability distributions?
+Joint probability distributions are useful because we often collect data for two variables (like Sports and Gender) 
+and we’re interested in answering questions related to both variables.

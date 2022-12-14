@@ -1,0 +1,15 @@
+It is a continuous probability distribution that often concerns the amount of time until some specific event happens.
+The exponential distribution is a probability distribution function that is commonly used to measure the expected time for an event to happen.
+
+For example, the amount of time (beginning now) until an earthquake occurs has an exponential distribution. 
+
+Other examples include the length of time, 
+		           in minutes, of long distance business telephone calls, and the amount of time, in months, a car battery lasts.
+
+Difference between the Poisson distribution and exponential distribution?
+	- Poisson distribution deals with the number of occurrences of events in a fixed period of time, whereas the exponential distribution is a continuous probability distribution 
+          that often concerns the amount of time until some specific event happens.
+
+Mean and variance of the exponential distribution?
+	- mean =  1/λ; variance =  1/λ2.
+	- The lambda represents the rate parameter, and it defines the mean number of events in an interval.

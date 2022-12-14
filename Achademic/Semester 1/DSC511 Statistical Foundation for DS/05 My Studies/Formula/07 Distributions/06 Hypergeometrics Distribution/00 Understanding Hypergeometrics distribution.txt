@@ -1,0 +1,11 @@
+** Sampling with replacement  : Probability will be same
+** Sampling without replacement : Probability will change
+
+The binomial distribution is frequently used to model the number of successes in a sample of size n drawn with replacement from a population of size N.
+If the sampling is carried out without replacement, the draws are not independent and so the resulting distribution is a hypergeometric distribution
+
+The Hypergeometrics distribution,It is used when you want to determine the probability of obtaining a certain number of successes without replacement from a specific sample size.
+
+
+Binomial (With replacement)
+Hypergeometrics (Without replacement)

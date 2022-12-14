@@ -1,0 +1,32 @@
+A random variable is a rule which assigns a numerical value to each possible outcome of an experiment.
+
+Its a function from sample space to set of called real numbers.
+I.e we have sample space, some outcome from sample space mapped to real number.
+
+X : S ---> ℝ
+
+Random Varibale usually written as X
+
+Example: Toss a coin: S = H, T
+	Call a head 1 and a tail 0
+	S = { 1, 0 }
+
+Example : Tossing coin twice, S = {HH,HT,TH,TT}
+	  Here, Let X be random variable that represents number of tails. Then the number of values assume by X are: x = 0,1,2
+
+Types of Random varibales
+	- Discrete Random Variable
+	- Continuous Random Variable:
+
+Discrete Random Variable:
+	- Finite or countable infinite 
+	- A random variable is discrete if its values can assume isolated points on the number line.
+	- Example : number of telephone calls in an hour.
+		    number of jobs arriving for service
+
+Continuous Random Variable:
+	- Uncountable infinite 
+	- A random variable is continuous if its values can assume all points in a particular interval.
+	- Example : Heights, Weights, Lifetime of a component,CPU time,Response time.
+
+

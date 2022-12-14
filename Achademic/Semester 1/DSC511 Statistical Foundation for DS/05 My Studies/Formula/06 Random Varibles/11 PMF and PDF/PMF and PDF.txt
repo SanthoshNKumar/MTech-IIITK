@@ -1,0 +1,3 @@
+The probability mass function (PMF) is used to describe discrete probability distributions. 
+
+In contrast, the probability density function (PDF) is applied to describe continuous probability distributions.

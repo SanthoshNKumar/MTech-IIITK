@@ -1,0 +1,12 @@
+CDF : Cumulative Distribution Function
+
+The cumulative distribution function (CDF) of a probability distribution contains the probabilities that a random variable X is less than or equal to X.
+
+In PDF/PMF we are calculating Probability of an random varibale taking the single outcome P(X = x)
+example :  what is the probabiliy of single failure,one failure,two failure and so on.
+
+sometime we are interested in group of outcome. means probability of outcome which is collection of outcome.
+
+Example : we are interested in finidng the probability where not more than two failures occured in a peak P(X ≤ 2 )
+
+here, X ≤ 2 which is a union of P(X = 0) ∪ P(X = 1) ∪ P(X = 2)

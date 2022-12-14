@@ -1,0 +1,229 @@
+** List of Formulas to remember on Statistical problem solving
+
+1. Set
+2. Subset
+3. Superset
+4. Set Operation
+	- Union
+	- Intersection
+5. Complement
+6. Cardinality
+7. Union for Mutually Exclusive Events (Disjoint Sets)(Independent)(with replacement)
+8. Union for Non Mutually Exclusive Events (Dependent)(without replacement)
+9. Empty Set
+10. De Morgan's Law
+11. Distributive Law
+12. Counting Principle
+	- No N events occurs in same time (Addition Rule)
+	- N Events occurs in same time (Multiplication Rule)
+13. Sample Space for random experiment
+14. Calculative Probability
+15. Axioms of Probability
+16. Inclusive and Exclusion principals
+		- P(A ∪ B) = P(A) + P(B) (Exclusion)(Independent)
+		- P(A ∪ B) = P(A) + P(B) - P(A ∩ B) (Inclusive)(Dependent)
+		
+17. Probability of the Complement of A is One Minus the Probability of A
+	- P(A') = 1-P(A)
+
+18. Joint Probability for Independent events (Multiplication Rule)
+	- P(A∩B) = P(A) * P(B)
+
+19. Joint Probability for dependent events (Multiplication Rule)
+	- P(A∩B) = P(B) * P(A|B)
+	- P(B∩A) = P(A) * P(B|A)
+
+20. Marginal Probability
+
+21. Conditional Probability for
+ 	Independent events
+		- P(B|A) = P(B)
+		- p(A|B) = P(A)
+	
+	Dependent events
+		- P(B|A) = P(A∩B) / P(A)
+		- P(A|B) = P(B∩A) / P(B)
+	
+22. Multiplication Rule
+	Mutually Exclusive Events (Independent)
+		-  P(A and B) = P(A∩B) =  P(A) * P(B)
+	
+	Non Mutually Exclusive Events (Dependent)
+		-  P(A and B) = P(A∩B) =  P(B) * P(A|B)
+
+23. Addition Rule 
+	Mutually Exclusive Events (Independent)
+		-  P (A ∪ B) = P(A) + P(B)
+
+	Non Mutually Exclusive Events (Dependent)
+		- P (A ∪ B) = P(A) + P(B) – P (A and B)
+
+24.  Law of Total probability (Joint)
+		- S = C1 ∪ C2 ∪ . . . . . ∪ Cn
+		  A = A ∩ S
+		  P(A) = P (A ∩ C1) + P (A ∩ C2) + … + P (A ∩ Cn)
+
+25.  Law of Total probability (Conditional)
+		- S = C1 ∪ C2 ∪ . . . . . ∪ Cn
+		  A = P(A|S)
+		  P(A) = P(A|C1)P(C1) + P(A|C2)P(C2) + … + P(A|Cn)P(Cn)
+
+26. Bayes Theorem
+	- Posterior Probability
+	- Prior Probability
+	- Likelihood
+	- Evidence
+
+27. Venn Diagram for 
+	- A ∩ S
+	- A'∩ S
+	- A'∩ B'
+	- A ∪ B
+	- B - A
+	- A-B-C
+	- P(A) + P(B) - 2(A ∩ B)
+
+28. Permutation 
+	- Repetition allowed
+	- Repetition not allowed
+
+29. Combination
+	- Repetition allowed
+	- Repetition not allowed
+
+
+30. PDF/PMF and CDF for 
+	- Discrete random variable
+	- Continuous random variable
+
+31. Mean for 
+	- Discrete random variable
+	- Continuous random variable
+
+32. Variance for 
+	- Discrete random variable
+	- Continuous random variable
+
+33. Sample Variance
+
+34. Standard Deviation
+
+35. Bernoulli Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+36. Uniform Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+37. Binominal Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+38. Bernoulli Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+39. Geometric Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+40. Hypergeometric Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+41. Poisson Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+42. Exponential Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+43. Continuous Uniform Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+44. Normal Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+45. Standard Normal Distribution
+	- PDF;CDF; Mean; Var; Sd
+
+46. Normal Approximation to Binomial Distribution
+	- Correction for Continuity
+
+47. Normal Approximation to Poisson Distribution
+	- Correction for Continuity
+
+48. Joint Probability Distribution
+
+49. Conditional Probability Distribution
+
+50. Marginal Probability Distribution
+
+51. Read and Area using table
+	- Standard Normal Distribution
+	- Student’s t-Distribution
+	- Chi-Square (X2) Distribution
+	- f table
+
+52. Find Z score
+
+53. Find PDF and CDF for all kind of Distributions
+
+54. covariance and correlation
+
+55. Statistical Inference
+	- Sample mean
+	- Sample Variance
+	- Sample Median
+	- Sample Mode
+	- Standard Deviation
+	- Degree of Freedom
+	- Sample range
+	- Sampling Distribution for mean x̄
+	- Central limit theorem
+	- Find Z value
+	    - Large Sample (n≥30)
+	    - Small Sample (n<30)
+
+56. Point Estimation
+	
+57. Maximum Likelihood Estimator
+
+58. Confidence Interval Estimation
+	- CI on μ when σ2  is known (Two Sided)
+	- CI on when σ2  is known (one Sided)
+	- CI for μ  when σ2  is unknown (Two Sided) : T Statistic
+	- CI for μ  when σ2  is unknown (Two Sided) : T Statistic
+	- Large Sample Confident Interval
+
+59. Estimation of CI for Population Variance (σ2) (two sided and one sided)
+	- chi square test
+
+60. Estimating the ratio of two variances
+	 - F Statistic
+
+61. Hypothesis Testing
+	- Null and Alternative Hypothesis
+	- Acceptance and Rejection regions
+	- Critical values
+	- Sampling errors
+	- Statistical Significance Level
+	- One tailed Test
+	- Z test for μ when σ2  is known
+	- Large Sample Z-Test
+	- t-test on the μ for Normal population when σ2 is unknown
+	- Two Sample Z test ( for μ)
+	- Compare μ of n distributions where unknown (μ1,μ2...μn) but with common σ2
+		- Anova
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

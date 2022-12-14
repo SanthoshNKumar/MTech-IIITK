@@ -1,0 +1,7 @@
+An interval estimates for a population parameter is called a confidence Interval.
+
+find Confidence Interval at different scenarios
+	1. Confidence interval on mean of a normal distribution with Varianc known (mean (µ),σ2 known)
+	2. One Sided Confidence Bounds
+	3. Confidence interval for mean (µ) when σ2 is unknown
+	4. Large Sample Confidence Interval
