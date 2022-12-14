@@ -1,0 +1,2 @@
+"0",""
+"0","conf_Cases_daily %>% summarise(""mean( in lakh)"" = mean(DailyTrend)) / 100000"

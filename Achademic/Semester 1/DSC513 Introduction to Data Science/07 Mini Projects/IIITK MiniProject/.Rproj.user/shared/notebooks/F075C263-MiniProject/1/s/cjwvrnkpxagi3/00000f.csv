@@ -1,0 +1,5 @@
+"0",""
+"0","country = full_join(fulldata2, country_newRecovered, by = c('subregion','country','Lat',"
+"0","                                                            'Long', 'date','conf','death',"
+"0","                                                            'recov','Active'))"
+"0",""

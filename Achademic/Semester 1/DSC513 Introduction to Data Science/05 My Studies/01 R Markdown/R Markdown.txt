@@ -1,0 +1,96 @@
+install.packages("rmarkdown")
+
+
+---
+title: "Sheet Break Prediction"
+author: "Santhosh Kumar N"
+date: "27/Aug/2022"
+output:
+  pdf_document: default
+  html_document: default
+mainfont: Arial
+---
+
+# Header 1
+
+## Header 2
+
+*Italic*
+
+**Bold**
+
+This is **code** in text
+
+# Unordered list item
+* item1
+* item2
+* item3
+
+1. Ordered list item
+
+[Link](https://www.google.com)
+
+
+$A = \pi \times r^{2}$
+
+# Code Chunks
+
+```{r}
+  medium <- "LinkedIn"
+  num_views <- 10000
+
+	if(medium == 'instagram'){
+	  print("Great,You have a instagram account")
+	}else{
+	  print("You dont have instagram account")
+	}
+
+```
+# Hiding code chunks
+
+```{r, echo = FALSE}
+  medium <- "LinkedIn"
+  num_views <- 10000
+
+	if(medium == 'instagram'){
+	  print("Great,You have a instagram account")
+	}else{
+	  print("You dont have instagram account")
+	}
+
+```
+```{r, fig.width = 4, fig.height = 3}
+A <- c("a", "a", "b", "b")
+B <- c(5, 10, 15, 20)
+dataframe <- data.frame(A, B)
+print(dataframe)
+boxplot(B~A,data=dataframe)
+```
+
+
+```{r warning=FALSE}
+library(broom)
+library(pander)
+A <- c(20, 15, 10)
+B <- c(1, 2, 3)
+
+lm_test <- lm(A ~ B)            # Creating linear model
+
+table_obj <- tidy(lm_test)      # Using tidy() to create a new R object called table
+
+pander(table_obj, digits = 3)   # Using pander() to view the created table, with 3 sig figs 
+
+```
+* Make text italic like *this* or _this_.
+* Make text bold like **this** or __this__.
+* Use `backticks` for code.
+* Wrap a character to subscript in tildes (`~`). For example, `H~2~O` renders as H~2~O.
+* Wrap a character to superscript in carets (`^`), like this: `R^2^` renders as R^2^.
+
+
+
+Direct in-line links: <https://rmarkdown.rstudio.com/>.
+
+Phrase links: RStudio's [R Markdown page](https://rmarkdown.rstudio.com/).
+
+![R Markdown image](https://www.dataquest.io/wp-content/uploads/2020/06/r-markdown-1536x976.jpg)

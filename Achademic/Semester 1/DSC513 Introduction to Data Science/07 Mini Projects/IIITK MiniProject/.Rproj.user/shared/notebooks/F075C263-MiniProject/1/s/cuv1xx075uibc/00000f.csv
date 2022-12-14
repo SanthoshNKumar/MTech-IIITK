@@ -1,0 +1,7 @@
+"0",""
+"0","sum(df_list$totalCases_death) /1000000 # Million"
+"2","Warning: Unknown or uninitialised column: `totalCases_death`."
+"1","[1]"
+"1"," 0"
+"1","
+"

@@ -1,0 +1,2 @@
+"0","#head(case.conf)"
+"0","head(case.conf %>% arrange(country))"

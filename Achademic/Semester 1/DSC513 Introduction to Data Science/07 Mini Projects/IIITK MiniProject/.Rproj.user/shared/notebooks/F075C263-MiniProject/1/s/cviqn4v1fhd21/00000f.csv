@@ -1,0 +1,6 @@
+"0",""
+"0","monthwise_cases= country %>% group_by(month = lubridate::floor_date(date, 'month')) %>%"
+"0","    summarize(Conf = sum(newCases),death = sum(newDeath),recov = sum(newRecovered))"
+"0",""
+"0","monthwise_cases = head(monthwise_cases,18)"
+"0",""

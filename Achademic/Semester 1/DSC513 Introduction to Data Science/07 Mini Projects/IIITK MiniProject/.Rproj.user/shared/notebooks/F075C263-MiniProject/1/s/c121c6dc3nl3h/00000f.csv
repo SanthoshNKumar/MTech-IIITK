@@ -1,0 +1,5 @@
+"0","# Observed mapping issue with country values 'China' and 'Canada' so ignoring the data belongs those values"
+"0",""
+"0","case.conf = case.conf[case.conf$country!= 'Canada' & case.conf$country!= 'China',]"
+"0","case.death = case.death[case.death$country!= 'Canada' & case.death$country!= 'China',]"
+"0","case.recov = case.recov[case.recov$country!= 'Canada' & case.recov$country!= 'China',]"

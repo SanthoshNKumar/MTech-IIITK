@@ -1,0 +1,5 @@
+"0",""
+"0","recov_Cases_daily = data.frame(country %>% group_by(date) %>% "
+"0","                                 summarise(recovCases = sum(recov)))"
+"0",""
+"0","head(recov_Cases_daily)"

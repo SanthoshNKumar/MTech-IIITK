@@ -1,0 +1,22 @@
+library(stringr)
+
+# Trim leading and trailing white space
+	str_trim(" this is a test ")
+
+# Pad string with zeros
+	str_pad("24493", width = 7, side = "left", pad = "0")
+
+# Create character vector of names
+	friends <- c("Ann", "Vinod", "Ashok")
+
+# Search for string in vector
+	str_detect(friends, "Vinod")
+
+Replace string in vector
+	str_replace(friends, "Ashok", "Thomas")
+
+# Make all lowercase
+	tolower("I AM TALKING LOUDLY!!")
+
+# Make all uppercase
+	toupper("I am whispering...")

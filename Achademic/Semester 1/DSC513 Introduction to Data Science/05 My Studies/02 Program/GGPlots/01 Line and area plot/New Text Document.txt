@@ -1,0 +1,5 @@
+df = read.csv("C:\\Users\\INSAKUM46\\OneDrive - ABB\\Documents\\DefectModel\\formated_data.csv")
+
+df1 = data.frame(X = 1: length(df$X501FC2123_MV), Y = df$X501FC2123_MV)
+ggplot(data = df1,aes(x = X,y = Y, group = 1)) + geom_line() + geom_point()
+

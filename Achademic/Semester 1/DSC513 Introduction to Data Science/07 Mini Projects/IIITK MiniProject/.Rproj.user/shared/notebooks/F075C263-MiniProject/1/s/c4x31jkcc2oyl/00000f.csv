@@ -1,0 +1,5 @@
+"0",""
+"0","ggplot(daily,aes(x = date, y = mortality_rate)) + "
+"0","        geom_line() + "
+"0","        labs(title = ""Death rate daily basis"")"
+"0",""

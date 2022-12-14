@@ -1,0 +1,137 @@
+---
+title: "Untitled"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown for dplyr
+
+```{r}
+library(dplyr)
+library(gapminder)
+library(ggplot2)
+
+```
+
+**2.3 Understanding gapminder dataset**
+
+```{r}
+gapminder
+```
+If you hit enter after correctly typing this, your R script is executed and the output is shown in the R Console.
+
+
+**2.3.1 Understanding a data frame**
+
+Now that you’ve loaded the gapminder dataset, you can start examining and understanding it.We’ve already loaded the gapminder and dplyr packages. Can you look and tell, how many observations (rows) are in the
+dataset?
+Ans:1704
+
+
+**2.3.2 Filtering**
+
+The filter verb extracts particular observations based on a condition. In this exercise you’ll filter for observations from a particular year.
+Add a filter() line after the pipe (%>%) to extract only the observations from the year 1957. Remember that
+you use == to compare two values.
+
+
+```{r}
+# Filtering the gapminder datasert for the year 1957
+gapminder %>%
+  filter(year== 1957)
+
+```
+**2.3.3 Filtering for one country and one year**
+
+You can also use the filter() verb to set two conditions, which could retrieve a single observation. Just like in the last exercise, you can do this in two lines of code, starting with gapminder %>% and having the filter() on the second line. Keeping one verb on each line helps keep the code readable. Note that each time, you’ll put the pipe %>% at the end of the first line (like gapminder %>%); putting the pipe at the beginning of the second line will throw an error. * Filter the gapminder data to retrieve only the observation
+from China in the year 2002. Ans
+
+
+```{r}
+# Filter for China in 2002
+gapminder %>%
+  filter(country == 'China') %>% filter(year == 2002)
+```
+
+
+**2.3.4 Arranging observations by life expectancy** 
+
+You can use arrange() to sort observations in ascending or descending order of a particular variable. In this
+case, you can sort the dataset based on the lifeExp variable.
+* Sort the gapminder dataset in ascending order of life expectancy (lifeExp).
+* Sort the gapminder dataset in descending order of life expectancy.
+
+```{r}
+# Sort in ascending order of lifeExp
+gapminder %>% arrange(lifeExp)
+```
+```{r}
+# Sort in descending order of lifeExp
+gapminder %>%
+  arrange(desc(lifeExp))
+```
+**2.3.5 Filtering and arranging**
+
+You’ll often need to use the pipe operator (%>%) to combine multiple dplyr verbs in a row. In this case, you can combine a filter() with an arrange() to find the highest populous countries in a particular year.
+
+*Use filter() to extract observations from just the year 1957, then use arrange() to sort in descending order of population (pop).
+
+```{r}
+# Filter for the year 1957, then arrange in descending order of population
+
+gapminder %>% 
+  filter(year==1957) %>% 
+  arrange(desc(pop))
+```
+```{r}
+gapminder %>%
+  mutate(lifeExp = 12 * lifeExp)
+
+gapminder %>% mutate(lifeExpMonth = 12*lifeExp)
+
+```
+
+```{r}
+gapminder %>% filter(year == 2002) %>% mutate(lifeExpMonth = 12*lifeExp) %>%
+  arrange(desc(lifeExpMonth))
+```
+
+**2.4 Data Visualization**
+
+##**2.4.1 Variable assignment**
+
+Throughout the exercises from this point, you’ll be visualizing a subset of the gapminder data from the year 1952. First, you’ll have to load the ggplot2 package, and create a gapminder_1952 dataset to visualize.
+
+```{r}
+# Load the ggplot2 package as well
+
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+
+# Create gapminder_1952
+gapminder_1952 <- gapminder%>%filter(year==1952)
+
+```
+
+Use ggplot to plot population (pop) on x- axis and GDP per capita (gdpPercap) on y axis
+
+```{r}
+gapminder_1952 <- gapminder %>%
+  filter(year == 1952)
+
+```
+
+```{r,06}
+# put pop on the x-axis and gdpPercap on the y-axis
+ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) + geom_point()
+```
+
+
+
+

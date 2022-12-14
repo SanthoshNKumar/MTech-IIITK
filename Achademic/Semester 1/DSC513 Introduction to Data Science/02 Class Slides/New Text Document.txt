@@ -1,0 +1,50 @@
+Introduction to AI and Data Science
+	- Gather Hyper Cycle
+	- Gather Hyper Cycle for Emerging Technologies 2010
+	- Gather Hyper Cycle for Emerging Technologies 2020
+	- Gather Hyper Cycle for Artificial Intelligence,2019
+	- Gather Hyper Cycle for Artificial Intelligence,2020
+	- Gather Hyper Cycle for Artificial Intelligence,2021
+
+Introduction to R:
+	- Variables
+	- DataTypes (numeric;character;logical)
+	- Data Objects
+		- List; Arrays; matrix; vector; DataFrames
+	- Factors
+	- apply() Family
+
+Data Wrangling: Introduction to dplyr packages
+	- spread() and gather()
+	- Pivot_longer
+Dplyr
+	- The dplyr is a powerful R-package to manipulate, clean and summarize unstructured data
+	- Data manipulation using dplyr
+		- Select
+		- Filter
+		- arrange
+		- mutate
+		- summarise
+		- arrange
+		- 
+	 	
+Introduction to Tidyr
+	- pipe (%>%)
+	- 
+Understanding Tidyverse Part II
+Understanding Tidyverse Part II(contd)
+Qualitative Data Analysis Part I
+Qualitative Data Analysis part II
+Exploring Maps in R programming Part I
+Exploring Maps in R Part II
+Sample Covid 19 analysis, Mini Project Description
+
+
+Statistical Modelling Introduction
+Statistical Modelling Part II
+Statistical Modelling Part III
+Statistical Modelling - Covariates and effect size- + Intro to Missing Data
+Missing Values - Part II
+Missing Values- Part III - Imputation, Simputation etc
+Web Scraping using R
+

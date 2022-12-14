@@ -1,0 +1,7 @@
+Date conversions in R Date conversions is can be done using lubridate package
+
+ymd("2015-08-25")
+ymd("2015 August 25")
+mdy("August 25, 2015")
+hms("13:33:09")
+ymd_hms("2015/08/25 13.33.09")

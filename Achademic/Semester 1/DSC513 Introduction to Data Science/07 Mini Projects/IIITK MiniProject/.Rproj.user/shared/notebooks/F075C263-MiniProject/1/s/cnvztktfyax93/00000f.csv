@@ -1,0 +1,5 @@
+"0",""
+"0","daily = mutate(daily,recovery_rate = total_recov / total_conf)"
+"0",""
+"0","daily = mutate(daily,mortality_rate = total_death / total_conf)"
+"0",""

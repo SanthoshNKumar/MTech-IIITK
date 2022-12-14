@@ -1,0 +1,74 @@
+7th August
+
+13th August
+
+14st August	
+
+20th August
+
+21st August	
+
+27th August
+
+28th August
+
+3rd September
+
+4th September
+
+10th September
+	- Mid Semester Exam1
+
+11th September
+	- Mid Semester Exam1
+
+17th September
+	- Mid Semester Exam1
+
+18th September
+
+24th September
+	- Cleaning dataset
+
+25th September
+	- Qualitative Data Analysis
+		- https://rconnect.iiitkottayam.ac.in/connect/#/apps/b78eec19-e583-4d16-ba14-73b909b7557e/access
+
+2nd Octobers
+	- Holiday
+
+8th October
+	- Holiday
+
+9th October
+	- Maps in R Programming
+		- install.packages("leaflet")
+		- https://rconnect.iiitkottayam.ac.in/content/f2b62fe8-4106-4598-80f4-e496014b9343/Explore-Maps.html
+	- Setting Views in Maps
+	- Narrower view
+	- Plotting data
+		- https://rconnect.iiitkottayam.ac.in/content/4b447b70-594c-4a41-bc5d-c10a79a14fdc/Explore-Maps-Part-II.html
+
+
+15th Oct
+	- Maps (Contd..)
+	- https://rconnect.iiitkottayam.ac.in/content/4b447b70-594c-4a41-bc5d-c10a79a14fdc/Explore-Maps-Part-II.html#swapping-popups-forzzz
+
+
+16th Oct
+	- https://rconnect.iiitkottayam.ac.in/content/4b447b70-594c-4a41-bc5d-c10a79a14fdc/Explore-Maps-Part-II.html#universities-by-sector
+
+
+30th Oct
+	- Statistical Modeling
+	- https://lms.iiitkottayam.ac.in/pluginfile.php/7470/mod_resource/content/1/Statistical-Modelling-in-R_latest.pdf
+	- https://lms.iiitkottayam.ac.in/mod/folder/view.php?id=1233
+
+05th Nov
+	- https://lms.iiitkottayam.ac.in/mod/resource/view.php?id=1232
+	- library(rpart) for decision Tree
+
+6th Nov
+	- library(mosic)
+	- T test usage
+	- 

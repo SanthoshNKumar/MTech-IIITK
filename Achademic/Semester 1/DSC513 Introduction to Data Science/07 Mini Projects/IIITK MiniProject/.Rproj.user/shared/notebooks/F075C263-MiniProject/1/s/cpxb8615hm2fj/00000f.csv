@@ -1,0 +1,5 @@
+"0",""
+"0","top_10_Country_Highest_recovCases = head(recov_Cases_country %>% arrange(desc(totalCases_recov)),10)"
+"0",""
+"0","top_10_Country_Highest_recovCases$totalCases_recov =  top_10_Country_Highest_recovCases$totalCases_recov / 1000000"
+"0",""

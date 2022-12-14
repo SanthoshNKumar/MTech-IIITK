@@ -1,0 +1,4 @@
+"0","ggplot() + geom_line(data =conf_Cases_daily, aes(x=date,y=DailyTrend),color='red') + "
+"0","           geom_line(data =death_Cases_daily, aes(x=date,y=DailyTrend),color='blue') + "
+"0","           geom_line(data =recov_Cases_daily, aes(x=date,y=DailyTrend),color='black') + geom_point()"
+"0",""

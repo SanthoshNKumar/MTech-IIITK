@@ -1,0 +1,11 @@
+X <- c('A','B','C','D','E','F')
+Y <- c(15,16,20,19,19,17)
+Z <- c(5.0,4.0,5.0,2.0,1.0,3.0)
+  
+dataframe <- data.frame(Name = X, Age = Y, CGPA = Z )
+  
+# applying scale function
+dataframe[2 : 3] <- as.data.frame(scale(dataframe[2 : 3]))
+  
+# displaying result
+dataframe

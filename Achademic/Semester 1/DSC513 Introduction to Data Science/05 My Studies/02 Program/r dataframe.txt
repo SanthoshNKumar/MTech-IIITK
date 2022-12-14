@@ -1,0 +1,34 @@
+# read csv
+
+# read RDS
+
+# create dataframe
+
+# get 5 rows of data
+
+# get last 5 rows of data
+
+# get first columns of data
+
+# get first 2 columns of data
+
+# get the dimention of the dataframe
+
+# get the rows count in the dataframe
+
+# get the column names in the dataframe
+
+# get the class of the column in the dataframe
+
+# get the unique elements in the columns 
+
+# column bind two dataframes
+
+# row bind dataframes
+
+# using apply function 
+
+# rename the columns in the dataframe
+
+# Delete columns by name
+	subset(df, select = -c(Company))

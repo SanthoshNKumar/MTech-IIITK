@@ -1,0 +1,815 @@
+---
+title: "Analysis of COVID-19 Pandemic"
+author: "2022MCS120009 (Santhosh Kumar N )"
+date: "2022-11-18"
+output: 
+  pdf_document: 
+    fig_width: 12
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Objective
+
+To review and critically appraise published and
+preprint reports of prediction models for diagnosing
+coronavirus disease 2019 (covid-19) in patients with
+suspected infection, for prognosis of patients with
+covid-19, and for detecting people in the general
+population at risk of being admitted to hospital for
+covid-19 pneumonia.
+
+
+# Preliminary analysis
+
+You can clean, prepossess the data here.
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+```
+
+```{r}
+options(warn = -1)
+
+```
+
+```{r}
+
+### Read The input data
+confirmedraw = read.csv("time_series_covid19_confirmed_global.csv")
+deathsraw= read.csv("time_series_covid19_deaths_global.csv")
+recoveredraw = read.csv("time_series_covid19_recovered_global.csv")
+
+# Get the Dimention of the dataset
+print(dim(confirmedraw))
+
+print(dim(deathsraw))
+
+print(dim(recoveredraw))
+
+```
+```{r}
+#Sample data
+
+head(recoveredraw[1,1:10])
+
+```
+```{r}
+# Function for initial Preprocessing Activity to Create and Structure the raw data
+formatTheData = function(data,colName) {
+    
+    # Rename the lengthy columns
+    covid_data = data %>% rename('subregion' = 'Province.State','country' = 'Country.Region')
+    
+    # Explude not requied columns
+    covid_data = covid_data %>%  pivot_longer(cols = -one_of('country','subregion','Lat','Long')
+                ,names_to = 'date'
+               ,values_to = colName
+               )
+    
+    # Remove 'X' on the Dataframe header
+    covid_data$date <- covid_data$date %>% sub("X", "", .)
+  
+    # COnver to dateformat  
+    covid_data$date = mdy(covid_data$date)
+
+    # Sort the data in ascending order
+    covid_data = covid_data %>% arrange(date)
+
+    # Round off the values to 3 decimal on Lat and Long   
+    covid_data$Lat = round(covid_data$Lat,3)
+
+    covid_data$Long = round(covid_data$Long,3)
+    
+    #covid_data = merge(countryToContinent,covid_data,  by.y = "Country", by.x = "Country.Region")
+
+    print(unique(format(covid_data$date, "%Y")))
+    print(dim(covid_data))
+
+    # Have observed that some issue in canadat nation data where recovered and Death and Conf cases not maching so ignoring     
+    covid_data  = covid_data[covid_data$country != 'canada',]
+    return(data.frame(covid_data))
+    
+}
+```
+
+
+```{r}
+case.conf = formatTheData(confirmedraw,"conf")
+case.death = formatTheData(deathsraw,"death")
+case.recov = formatTheData(recoveredraw,"recov")
+
+```
+```{r}
+head(case.conf)
+```
+
+
+```{r}
+## we have to remove recovered data for Canada due to mismatch issue (Canada recovered data is counted by Country-wise rather than Province/State-wise).
+
+case.conf = case.conf[case.conf$country!= 'Canada' & case.conf$country!= 'China',]
+case.death = case.death[case.death$country!= 'Canada' & case.death$country!= 'China',]
+case.recov = case.recov[case.recov$country!= 'Canada' & case.recov$country!= 'China',]
+```
+
+```{r}
+#head(case.conf)
+head(case.conf %>% arrange(country))
+
+```
+```{r}
+
+tail(case.conf)
+
+```
+
+```{r}
+
+tail(case.death)
+
+
+```
+
+```{r}
+
+full_date = full_join(case.conf, case.death, by = c('subregion','country','Lat','Long', 'date'))
+
+country = full_join(full_date, case.recov, by = c('subregion','country','Lat','Long', 'date'))
+
+
+```
+
+```{r}
+sum(is.na(country))
+
+```
+
+```{r}
+
+# Remove NA and Nan data from the processed data alsi negative values
+country = country %>% filter(!is.na(Lat) & !is.na(Long) & !is.na(conf) & !is.na(death) & !is.na(recov))
+
+country = country[country$recov >=0 & country$death >=0 & country$conf >=0,]
+
+sum(is.na(country))
+
+```
+
+```{r}
+
+dim(country)
+
+```
+
+```{r}
+
+length(unique(country$country))
+
+```
+#### Compute Active Cases
+
+```{r}
+country$Active = country$conf -  country$death - country$recov
+
+country = country[country$Active>=0 & country$recov>=0,]
+
+dim(country)
+
+```
+
+```{r}
+head(country[country$recov !=0,])
+
+```
+
+#### Get 'NewCases' 'NewDeath' and 'New Recovered' 'New Active' details
+
+```{r}
+
+getNewCases = function(nation,col,newcolname){
+    df = country
+    df = df[df$country == nation,]
+    
+    df = df %>% arrange(date)
+    newCases = df[2:dim(df)[1],][,col] - df[1:dim(df)[1],][,col]
+    newCases = append(newCases,0,0)
+    
+    newCases = newCases[-length(newCases)]
+    df$newCases = as.integer(0)
+    names(df)[names(df) == "newCases"] <- newcol
+    
+    df[,newcol] <- newCases
+
+    return(df)
+}
+
+
+```
+#### Get New Cases
+```{r}
+
+country_newCases <- country
+country_newCases$newCases = as.integer(0)
+country_newCases <- country_newCases[0,]
+
+newcol = "newCases"
+
+for(c in unique(country$country))
+    {
+    country_newCases = rbind(country_newCases,getNewCases(c,'conf','newCases'))
+}
+
+```
+#### Get New Death Cases
+```{r}
+country_newDeath <- country
+country_newDeath$newDeath = as.integer(0)
+country_newDeath <- country_newDeath[0,]
+
+col = "death"
+newcol = "newDeath"
+
+for(c in unique(country$country))
+    {
+    country_newDeath = rbind(country_newDeath,getNewCases(c,col,newcol))
+}
+
+```
+
+#### New Recovered Cases
+
+```{r}
+
+country_newRecovered <- country
+country_newRecovered$newRecovered = as.integer(0)
+country_newRecovered <- country_newRecovered[0,]
+
+col = "recov"
+newcol = "newRecovered"
+
+for(c in unique(country$country))
+    {
+    country_newRecovered = rbind(country_newRecovered,getNewCases(c,col,newcol))
+}
+
+```
+
+#### New Active Cases
+
+```{r}
+
+country_newActive <- country
+country_newActive$newActive = as.integer(0)
+country_newActive <- country_newActive[0,]
+
+col = "Active"
+newcol = "newActive"
+
+for(c in unique(country$country))
+    {
+    country_newActive = rbind(country_newActive,getNewCases(c,col,newcol))
+}
+
+
+```
+
+#### Merge All cases
+
+```{r}
+
+fulldata1 = full_join(country_newCases, country_newDeath, by = c('subregion','country','Lat',
+                                                            'Long', 'date','conf','death',
+                                                            'recov','Active'))
+
+
+```
+
+
+```{r}
+
+fulldata2 = full_join(fulldata1, country_newActive, by = c('subregion','country','Lat',
+                                                            'Long', 'date','conf','death',
+                                                            'recov','Active'))
+
+
+```
+
+```{r}
+
+country = full_join(fulldata2, country_newRecovered, by = c('subregion','country','Lat',
+                                                            'Long', 'date','conf','death',
+                                                            'recov','Active'))
+
+```
+
+```{r}
+head(country)
+
+```
+
+
+
+# Detailed analysis
+
+```{r}
+# Total cases reported so far
+
+sum(country$newCases)
+```
+
+```{r}
+# Total cases reported in India
+sum(country[country$country == "India",]$newCases)
+
+```
+```{r}
+
+## Confirmed Cases Country wise
+
+Countrywise_ConfCases = country %>% group_by(country) %>% 
+                                        summarise(totalCases_conf = sum(newCases)) %>% 
+                                        arrange(desc(totalCases_conf))
+
+top_10_Country_Highest_ConfCases = head(Countrywise_ConfCases,10)
+
+head(top_10_Country_Highest_ConfCases)
+
+```
+
+```{r}
+# Visualize the same using ggplot
+ggplot(data = head(top_10_Country_Highest_ConfCases),aes(x = reorder(country,totalCases_conf),
+                                                         y = totalCases_conf,fill = country)) + geom_bar(stat = "identity") + 
+                    labs(title = "Countries with highest number of cases(Millions)") + xlab("Country")
+
+```
+
+```{r}
+# Lowest(Top 10) cases reported
+
+top_10_Country_lowest_ConfCases = tail(Countrywise_ConfCases %>% arrange(desc(totalCases_conf)),10)
+
+top_10_Country_lowest_ConfCases
+
+```
+
+```{r}
+# Visualize the same using ggplot
+ggplot(data = head(top_10_Country_lowest_ConfCases),aes(x = reorder(country,totalCases_conf),
+                                                         y = totalCases_conf,fill = country)) + geom_bar(stat = "identity") + 
+                    labs(title = "Countries with lowest number of cases(Millions)") + xlab("Country")
+
+```
+
+```{r}
+
+# Daily Trend on Confirmed Cases
+conf_Cases_daily = data.frame(country %>% group_by(date) %>% summarise(DailyTrend = sum(newCases)))
+
+head(conf_Cases_daily)
+
+```
+
+```{r}
+
+conf_Cases_daily$DailyTrend <- ifelse(conf_Cases_daily$DailyTrend < 0,0,conf_Cases_daily$DailyTrend)
+
+```
+
+```{r}
+
+ggplot(conf_Cases_daily,aes(x = date, y = DailyTrend)) + 
+        geom_line() + 
+        labs(title = "Confimed Cases daily basis")
+
+```
+
+```{r}
+# Look ate Death Cases Countrywise
+
+death_Cases_country = country %>% group_by(country) %>% 
+                                        summarise(totalCases_Death = sum(newDeath)) %>% 
+                                        arrange(desc(totalCases_Death))
+
+top_10_Country_Highest_deathCases = head(death_Cases_country %>% arrange(desc(totalCases_Death)),10)
+
+top_10_Country_Highest_deathCases$totalCases_Death =  top_10_Country_Highest_deathCases$totalCases_Death / 100000
+
+```
+
+```{r}
+
+top_10_Country_Highest_deathCases
+
+```
+
+```{r}
+
+ggplot(data = head(top_10_Country_Highest_deathCases),aes(x = reorder(country,totalCases_Death),
+                                                         y = totalCases_Death,fill = country)) + geom_bar(stat = "identity") + 
+                    labs(title = "Countries with highest number of Death cases(Lakh)") + xlab("Country")
+
+```
+
+```{r}
+
+tail(death_Cases_country)
+
+```
+
+```{r}
+
+top_10_Country_lowest_DeathCases = tail(death_Cases_country %>% arrange(desc(totalCases_Death)),10)
+
+ggplot(data = head(top_10_Country_lowest_DeathCases),aes(x = reorder(country,totalCases_Death),
+                                                         y = totalCases_Death,fill = country)) + geom_bar(stat = "identity") + 
+                    labs(title = "Countries with lowest number of cases(Millions)") + xlab("Country")
+
+```
+
+```{r}
+
+death_Cases_daily = data.frame(country %>% group_by(date) %>% summarise(DailyTrend = sum(newDeath)))
+
+head(death_Cases_daily)
+
+```
+
+```{r}
+
+death_Cases_daily$DailyTrend <- ifelse(death_Cases_daily$DailyTrend < 0,0,death_Cases_daily$DailyTrend)
+
+```
+
+```{r}
+
+ggplot(death_Cases_daily,aes(x = date, y = DailyTrend)) + 
+        geom_line() + 
+        labs(title = "Death Cases daily basis")
+
+```
+#### 'Recovered' Cases Country wise
+```{r}
+
+recov_Cases_country <- data.frame(country = NA,totalCases = NA)
+
+df = country
+
+getRecovCasesCounrywise = function(country)
+{
+    df = df[df$country == country,]
+
+    df$recov_daily = df[2:dim(df)[1],]$recov - df[1:dim(df)[1],]$recov
+    
+    df$recov_daily <- ifelse(df$recov_daily < 0,0,df$recov_daily)
+    
+    return (data.frame(country = country,totalCases = sum(df$recov_daily)))
+}
+
+for(c in unique(country$country))
+    {
+    recov_Cases_country = rbind(recov_Cases_country,getRecovCasesCounrywise(c))
+}
+
+recov_Cases_country = recov_Cases_country %>% filter(!is.na(totalCases))
+
+colnames(recov_Cases_country)[2] <- "totalCases_recov"
+
+
+```
+
+```{r}
+
+top_10_Country_Highest_recovCases = head(recov_Cases_country %>% arrange(desc(totalCases_recov)),10)
+
+top_10_Country_Highest_recovCases$totalCases_recov =  top_10_Country_Highest_recovCases$totalCases_recov / 1000000
+
+```
+
+```{r}
+
+top_10_Country_Highest_recovCases
+
+```
+
+```{r}
+
+ggplot(data = head(top_10_Country_Highest_recovCases),aes(x = reorder(country,totalCases_recov),
+                                                          y = totalCases_recov,fill = country)) + 
+                geom_bar(stat = "identity") + 
+                    labs(title = "Countries with highest number of cases(Millions)") + xlab("Country")
+
+```
+
+```{r}
+
+top_10_Country_lowest_recovCases = tail(recov_Cases_country %>% arrange(desc(totalCases_recov)),20)
+
+```
+
+```{r}
+
+ggplot(data = head(top_10_Country_lowest_recovCases),aes(x = reorder(country,totalCases_recov),
+                                                         y = totalCases_recov,fill = country)) + 
+                geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+                    labs(title = "Countries with lowest number of cases") + xlab("Country")
+
+```
+
+
+```{r}
+
+recov_Cases_daily = data.frame(country %>% group_by(date) %>% summarise(recovCases = sum(recov)))
+
+head(recov_Cases_daily)
+
+```
+
+```{r}
+recov_Cases_daily$DailyTrend = recov_Cases_daily[2:dim(recov_Cases_daily)[1],'recovCases'] - 
+                                    recov_Cases_daily[1:dim(recov_Cases_daily)[1],'recovCases']
+
+recov_Cases_daily$DailyTrend <- ifelse(recov_Cases_daily$DailyTrend < 0,0,recov_Cases_daily$DailyTrend)
+
+```
+
+```{r}
+ggplot(recov_Cases_daily,aes(x = date, y = DailyTrend)) + 
+        geom_line() + 
+        labs(title = "Recovered Cases daily basis")
+
+```
+
+
+```{r}
+
+#### All kind of cases in one plot daily basis
+ggplot() + 
+  geom_line(data =conf_Cases_daily, aes(x=date,y=DailyTrend),color='red') + 
+  geom_line(data =death_Cases_daily, aes(x=date,y=DailyTrend),color='blue') + 
+  geom_line(data =recov_Cases_daily, aes(x=date,y=DailyTrend),color='black') + 
+     geom_point()
+
+```
+
+```{r}
+
+df_list <- list(Countrywise_ConfCases , death_Cases_country, recov_Cases_country)
+df_list <- df_list %>% reduce(full_join, by='country')
+
+```
+
+```{r}
+
+head(df_list)
+
+```
+
+
+```{r}
+
+#### Correlation between cases 'Confirmed' and 'Recovered'
+
+ggplot(df_list,aes(x = totalCases_conf,y = totalCases_recov)) +
+  geom_point() + 
+  ylim(0,1000000) + 
+  xlim(0,1000000)
+
+```
+
+
+```{r}
+
+#### Correlation between cases 'Confirmed' and 'Death'
+
+ggplot(df_list,aes(x = totalCases_conf,y = totalCases_Death)) + 
+  geom_point() +
+  ylim(0,25000) + 
+  xlim(0,1000000)
+
+```
+
+```{r}
+
+df_list$totalCases_conf = df_list$totalCases_conf
+df_list$totalCases_death = df_list$totalCases_Death
+df_list$totalCases_recov = df_list$totalCases_recov
+
+```
+
+
+```{r}
+
+head(df_list %>% arrange(desc(totalCases_conf)),10)
+
+```
+
+
+```{r}
+#### Mortality Rate and Recovery Rate 
+
+df_list[df_list$country == 'India',]
+
+```
+
+```{r}
+
+df_list = mutate(df_list,recovery_rate = totalCases_recov / totalCases_conf)
+
+df_list = mutate(df_list,mortality_rate = totalCases_death / totalCases_conf)
+
+```
+
+
+```{r}
+#### Order based on the highest 'death rate'
+
+head(df_list %>% arrange(desc(mortality_rate)))
+
+```
+
+
+```{r}
+#### Order based on the highest 'recovery_rate'
+
+head(df_list %>% arrange(desc(recovery_rate)))
+```
+
+```{r}
+df_list <- list(Countrywise_ConfCases, death_Cases_country, recov_Cases_country)
+df_list <- df_list %>% reduce(full_join, by='country')
+
+```
+
+
+```{r}
+#### World Reported Cases
+
+sum(df_list$totalCases_conf) /1000000000 # in billion
+
+
+```
+```{r}
+
+sum(df_list$totalCases_death) /1000000 # Million
+
+```
+
+```{r}
+
+sum(df_list$totalCases_recov) /1000000 # Million
+
+```
+
+
+```{r}
+
+#### Average Cases worldwide Recoved on daily wise
+
+# recov_Cases_daily
+
+recov_Cases_daily %>% summarise("mean( in lakh)" = mean(DailyTrend)) /100000
+
+```
+
+
+
+```{r}
+
+#### Average Cases worldwide Confirmed on daily wise
+
+conf_Cases_daily %>% summarise("mean( in lakh)" = mean(DailyTrend)) / 100000
+```
+
+
+```{r}
+#### Average Cases worldwide Recovered on daily wise
+
+death_Cases_daily %>% summarise("mean( in thousands)" = mean(DailyTrend))/ 1000
+```
+
+
+```{r}
+#### Plot Recovery and Death Rate
+
+tail(country)
+
+```
+
+
+```{r}
+
+daily = country %>% select('date','recov','conf','death') %>% group_by(date) %>% summarise(total_recov = sum(recov),
+                                                                                           total_conf = sum(conf),
+                                                                                           total_death = sum(death))
+
+head(daily)
+
+```
+
+
+```{r}
+
+daily = mutate(daily,recovery_rate = total_recov / total_conf)
+
+daily = mutate(daily,mortality_rate = total_death / total_conf)
+
+```
+
+
+```{r}
+
+ggplot(daily,aes(x = date, y = recovery_rate)) + 
+        geom_line() + 
+        labs(title = "Recovery rate daily basis")
+
+```
+
+
+```{r}
+
+ggplot(daily,aes(x = date, y = mortality_rate)) + 
+        geom_line() + 
+        labs(title = "Death rate daily basis")
+
+```
+
+
+```{r}
+
+#### Analysize Active Cases counry wise
+
+data = head(country %>% group_by(country) %>% summarise(Active_cases = sum(newActive)) %>% arrange(desc(Active_cases)),40) 
+
+ggplot(data,aes(x = reorder(country,Active_cases),y = Active_cases,fill = Active_cases)) + 
+geom_bar(stat = "identity") + coord_flip() +theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+
+```{r}
+
+#### Group by Month
+
+monthwise_cases= country %>% group_by(month = lubridate::floor_date(date, 'month')) %>%
+    summarize(Conf = sum(newCases),death = sum(newDeath),recov = sum(newRecovered))
+
+monthwise_cases = head(monthwise_cases,18)
+
+```
+
+
+```{r}
+
+monthwise_cases
+
+```
+
+
+```{r}
+
+ggplot() + geom_line(data =monthwise_cases, aes(x=month,y=Conf),color='red') + 
+           geom_line(data =monthwise_cases, aes(x=month,y=death),color='blue') + 
+           geom_line(data =monthwise_cases, aes(x=month,y=recov),color='black') + geom_point()
+
+```
+
+
+
+```{r}
+
+#### Analyze 'Recovered' and Death' rate
+
+country$newRecovered = abs(country$newRecovered)
+
+d = head(country %>% select('country','newRecovered','newDeath') %>% 
+                group_by(country)  %>% 
+                    summarise(recov = sum(newRecovered), death = sum(newDeath)),30)
+
+ggplot(d,aes(x = recov, y = death,color = country)) + geom_point()
+
+```
+
+
+This section should describe the inferences you have made.
+
+# Outcomes
+
+List and elucidate the objectives which were achieved.
+
+# Results and Discussions
+
+The pandemic of Coronavirus Disease 2019 (COVID-19) is a timely reminder of the nature and impact of Public Health Emergencies of International Concern. As of 12 January 2022, there were over 314 million cases and over 5.5 million deaths notified since the start of the pandemic. The COVID-19 pandemic takes variable shapes and forms, in terms of cases and deaths, in different regions and countries of the world. The objective of this study is to analyse the variable expression of COVID-19 pandemic so that lessons can be learned towards an effective public health emergency response
+
+
+We have found that regions and countries with high human development index have higher cases and deaths per million population due to COVID-19. This is due to international connectedness and mobility of their population related to trade and tourism, and their vulnerability related to older populations and higher rates of non-communicable diseases. We have also identified that the burden of the pandemic is also variable among high- and middle-income countries due to differences in the governance of the pandemic, fragmentation of health systems, and socio-economic inequities.

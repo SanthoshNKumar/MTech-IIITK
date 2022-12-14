@@ -1,0 +1,144 @@
+install.packages("naniar")
+install.packages("visdat")
+
+
+# Identify which values are missing.
+	1. any_na(x)
+        2. are_na(x)
+	3. n_miss(x)     # How many Missing values are there
+	4. prop_miss(x)
+	5. any_na(NaN)
+	6. any_na(NULL)
+	7. any_na(Inf)
+
+
+# Percentage of missing values in the data.
+	1. pct_miss function
+
+# how many complete values there are
+	1. n_complete
+	2. pct_complete
+
+# Get number and percentage of missings in each variable or case.
+	1. miss_var_summary
+	2. miss_case_summary
+
+# Get dataframe with number of missings in a variable.
+	1. miss_var_table
+
+# Get dataframe with case of missing 
+	1. miss_case_table
+
+# Get number of missings in a variable for a repeating span (time series data)
+	1. miss_var_span
+
+# miss_var_span() calculates the number of missing values in a specified variable for a repeating span. 
+# This is really useful in time series data, to look for weekly (7 day) patterns of missingness
+
+# miss_var_run() calculates the number of “runs” or “streaks” of missingness. 
+# This is useful to find unusual patterns of missingness, 
+#	for example, you might find a repeating pattern of 5 complete and 5 missings
+
+# Tabulating Missingness
+	1. miss_var_table()
+	2. miss_case_table
+
+
+# Missing Data Visualization
+
+# Visualize all of the missingness in the `riskfactors` dataset
+vis_miss(riskfactors)
+
+# Visualize and cluster all of the missingness in the `riskfactors` dataset
+vis_miss(riskfactors, cluster = TRUE)
+
+# visualise and sort the columns by missingness in the `riskfactors` dataset
+vis_miss(riskfactors, sort = TRUE)
+
+# Explore the number of missings in cases
+	gg_miss_case()
+
+# Visualize the number of missings in variables
+	gg_miss_var()
+
+# Explore the number of missings in variables
+	gg_miss_var()
+
+	gg_miss_upset() to give an overall pattern of missingness.
+
+	gg_miss_span
+
+
+# Count Missing values
+	Use 'miss_scan_count' to count the possible missings in the dataset,
+	
+	# Explore the strange missing values "N/A"
+	miss_scan_count(data = pacman, search = list("N/A"))
+	
+	# Explore the strange missing values "missing"
+	miss_scan_count(data = pacman, search = list("missing"))
+
+	# Explore the strange missing values "na"
+	miss_scan_count(data = pacman, search = list("na"))
+
+	# Explore all of the strange missing values, "N/A", "missing", "na", " "
+	miss_scan_count(data = pacman, search = list("N/A", "missing","na"," "))
+
+
+# Replace Missing values
+
+	# replace_with_na_at()
+	# replace_with_na_if()
+	# replace_with_na_all()
+
+	rep_NA<-replace_with_na_at(pacman,.vars = c("year", "month", "day"),~.x %in% c("N/A", "missing", "na", " "))
+	rep_NA_if<-replace_with_na_if(pacman,,predicate = is.character,~.x %in% c("N/A", "missing", "na", " "))
+	rep_NA_all<-replace_with_na_all(pacman, condition = ~.x %in% c("N/A", "missing", "na", " "))
+
+
+# Fix implicit missings using complete()
+	
+	# make implicit missing values explicit
+		frogger_tidy <- frogger %>% complete(name,time)
+
+	# Fill Values values 'down fill' or 'up fill'
+		df1 <- df %>% fill(c, .direction = 'up')
+
+
+# Exploring missingness dependence
+	library(visdat)
+	# oceanbuoys %>% arrange(year) %>% vis_miss()
+	# vis_miss(oceanbuoys, cluster = TRUE)
+	# oceanbuoys %>% arrange(year) %>% vis_miss()
+
+# Testing missing relationships
+
+	# Creating shadow matrix data
+		as_shadow(oceanbuoys)
+		bind_shadow(oceanbuoys)
+		bind_shadow(oceanbuoys, only_miss = TRUE)
+
+	as_shadow A shadow matrix has the same dimensions as the normal data frame; however, a shadow matrix simply denotes NA for a missing value and !NA for a 
+        non-missing value.
+
+	Bind_shadow() adds the shadow matrix to the end of the original data frame to make it easier to keep track of missing values. 
+        Here we wrapped it in data table to make it easier to read.
+
+
+# Performing grouped summaries of missingness
+	oceanbuoys %>% bind_shadow() %>% group_by(humidity_NA) %>% summarise(wind_ew_mean = mean(wind_ew), wind_ew_sd = sd(wind_ew))
+	oceanbuoys %>% bind_shadow() %>% group_by(humidity_NA) %>% summarise(wind_ns_mean = mean(wind_ns), wind_ns_sd = sd(wind_ns))
+
+
+# Plotting Dencity Curve for missing and Non Missing rows
+
+	bind_shadow(oceanbuoys) %>% ggplot(aes(x = wind_ew, color = air_temp_c_NA)) + geom_density()
+	oceanbuoys %>% bind_shadow() %>% ggplot(aes(x = air_temp_c_NA, y = wind_ew)) + geom_boxplot()
+
+# Using gg plot visualize the missing values
+	ggplot(oceanbuoys, aes(x = wind_ew,y = air_temp_c)) + geom_miss_point() 
+	ggplot(oceanbuoys, aes(x = wind_ew,y = air_temp_c)) + geom_miss_point() + facet_wrap(~year)
+
+
+# Performing and Tracking Imputation
+	ocean_imp_track <- bind_shadow(oceanbuoys) %>% impute_below_all() %>% add_label_shadow()

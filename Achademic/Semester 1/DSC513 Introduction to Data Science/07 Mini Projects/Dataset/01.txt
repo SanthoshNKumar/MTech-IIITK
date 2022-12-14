@@ -1,0 +1,16 @@
+archived_data
+	- archived_daily_case_updates (51)
+		Columns : 	Province/State; Country/Region; Last Update;Confirmed; Deaths; Recovered;Suspected
+
+	- archived_time_series (8)
+		Columns : Province.State; Country.Region; Lat; Long	
+
+csse_covid_19_data
+	- csse_covid_19_daily_reports (998)
+	- csse_covid_19_daily_reports_us (916)
+	- csse_covid_19_time_series	(6)
+
+
+who_covid_19_situation_reports  
+	- who_covid_19_sit_rep_pdfs (pdf)  (151)
+	- who_covid_19_sit_rep_time_series (1)

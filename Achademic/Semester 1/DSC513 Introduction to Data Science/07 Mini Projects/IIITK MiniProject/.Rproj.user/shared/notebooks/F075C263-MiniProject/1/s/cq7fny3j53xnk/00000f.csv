@@ -1,0 +1,4 @@
+"0",""
+"0","death_Cases_daily = data.frame(country %>% group_by(date) %>% summarise(DailyTrend = sum(newDeath)))"
+"0",""
+"0","head(death_Cases_daily)"

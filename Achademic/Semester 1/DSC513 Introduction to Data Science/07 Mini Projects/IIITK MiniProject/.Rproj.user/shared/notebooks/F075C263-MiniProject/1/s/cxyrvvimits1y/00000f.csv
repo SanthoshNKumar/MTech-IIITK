@@ -1,0 +1,5 @@
+"0",""
+"0","# Daily Trend on Confirmed Cases"
+"0","conf_Cases_daily = data.frame(country %>% group_by(date) %>% summarise(DailyTrend = sum(newCases)))"
+"0",""
+"0","head(conf_Cases_daily)"

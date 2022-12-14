@@ -1,0 +1,28 @@
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+filenames <- c('time_series_covid19_confirmed_global.csv',
+               'time_series_covid19_deaths_global.csv',
+               'time_series_covid19_recovered_global.csv')
+
+url.path <- paste0("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/",
+                   "master/csse_covid_19_data/csse_covid_19_time_series/")
+
+download <- function(filename) {
+  url <- file.path(url.path, filename)
+  dest <- file.path('./', filename)
+  download.file(url, dest)
+}
+
+bin <- lapply(filenames, download)
+
+raw.data.confirmed <- read.csv('time_series_covid19_confirmed_global.csv')
+raw.data.deaths <- read.csv('time_series_covid19_deaths_global.csv')
+raw.data.recovered <- read.csv('time_series_covid19_recovered_global.csv')
+
+print(dim(raw.data.confirmed)) # 289 1001
+print(dim(raw.data.deaths))  # 289 1001
+print(dim(raw.data.recovered)) # 274 1001

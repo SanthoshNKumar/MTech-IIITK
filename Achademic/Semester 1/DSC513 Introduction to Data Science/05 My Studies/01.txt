@@ -1,0 +1,275 @@
+
+# Dataframe Operations
+	# Remove the first column of sales: sales2
+	  sales2<-sales[,-1]
+
+	# Define a vector of column indices: keep
+	  keep<-5:(ncol(sales2)-15)
+          sales3<-sales2[,keep]
+
+	# Separating columns
+	  sales4 <- separate(sales3, event_date_time, c("event_dt","event_time"),sep =" ")
+	
+	# Split sales_ord_create_dttm: sales5
+	  sales5<-separate(sales4,sales_ord_create_dttm,c("ord_create_dt","ord_create_time"),sep=" ")
+
+	# Combining columns
+	  sales6 <- unite(sales5,"venue_city_state",venue_city,venue_state,sep=", ")
+	  weather4 <- unite(weather3, date, year, month, day, sep = "-")
+
+	# Date conversion for a column
+       	  weather4$date <- ymd(weather4$date)
+	
+	# Replace "T" with "0" (T = trace)
+	  weather5$PrecipitationIn <- str_replace(weather5$PrecipitationIn,"T","0")
+
+	# Convert characters to numerics
+          weather6 <- mutate_at(weather5, vars(CloudCover:WindDirDegrees), funs(as.numeric))
+
+	# nlevels
+	  sex <- factor(c("male", "female", "female", "male"))
+	  levels(sex) : (output : "female" "male")  
+	  nlevels(sex) : (output : 2)
+
+	# Change all the column data types of 'Char' to 'factor'
+       	  multiple_choice_responses %>%  mutate_if(is.character, as.factor)
+    
+	# gather : change the dataset from wide to long
+
+	# Check the min age
+	  min(multiple_choice_responses$Age, na.rm = TRUE)
+
+	# Check the max age
+	  max(multiple_choice_responses$Age, na.rm = TRUE)
+	 
+	  
+
+# Filtering
+	gapminder %>% filter(year==1957)
+
+# Filtering for one country and one year
+	gapminder%>% filter(country=="China") %>% filter(year==2002)
+
+# Arranging observations
+	gapminder %>% arrange(lifeExp) # ascending order
+	gapminder %>% arrange(desc(lifeExp)) # descending order
+
+# Filtering and arranging
+	gapminder %>% filter(year==1957) %>% arrange(desc(pop))
+
+# Filter for rows where Age is between 10 and 90
+	multiple_choice_responses %>% filter(between(Age, 10, 90))
+
+# Filter out people who not selected Data Scientist as their Job Title
+	multiple_choice_responses %>%  filter(CurrentJobTitleSelect != "Data Scientist")
+	
+
+# Filter using Which function
+# Find row with Max.Humidity of 1000
+       ind <- which(weather6$Max.Humidity == 1000)
+       weather6[ind, ]
+
+# Using mutate to change or create a column
+	gapminder %>% mutate(lifeExp=12*lifeExp)
+
+# Combining filter, mutate, and arrange
+	gapminder %>% filter(year==2007) %>% mutate(lifeExpMonths=12*lifeExp) %>% arrange(desc(lifeExpMonths))
+
+
+
+# Grouping and Summarizing
+	gapminder %>% summarize(medianLifeExp=median(lifeExp))
+	gapminder %>% filter(year==1957) %>% summarize(medianLifeExp=median(lifeExp))
+	gapminder %>% filter(year == 1957) %>% summarize(medianLifeExp = median(lifeExp), maxGdpPercap= max(gdpPercap))
+	gapminder %>% group_by(year) %>% summarize(medianLifeExp = median(lifeExp), maxGdpPercap = max(gdpPercap))
+	gapminder %>% filter(year==1957) %>% group_by(continent) %>% summarize(medianLifeExp = median(lifeExp), maxGdpPercap = max(gdpPercap))
+
+# Grouping with two varibles
+	gapminder %>% group_by(year, continent) %>% summarize(medianLifeExp = median(lifeExp), maxGdpPercap = max(gdpPercap))
+
+
+
+# Missing values in a dataset
+	# Check for NAs
+      	  is.na(df)
+
+	# Are there any NAs?
+	  any(is.na(df))
+
+	# Count number of NAs
+	  sum(is.na(df))
+
+	# Use summary() to find NAs
+	  summary(df)
+
+	# Find rows with no missing values
+	  complete.cases(df)
+
+	# Subset data, keeping only complete cases
+	  df[complete.cases(df), ]
+
+	# Another way to remove rows with NAs
+	  na.omit(df)
+
+	# remove NAs of MLMethodNextYearSelect
+	  multiple_choice_responses %>% filter(!is.na(MLMethodNextYearSelect)) 
+
+	# Filter data rows with no NAs on multiple columns
+       	  ipeds %>% filter(!is.na(Longitude),!is.na(Latitude))
+
+	# Create logical vectors indicating missing values (don't change)
+	  missing <- lapply(sales5[, date_cols], is.na)
+
+	# Create a numerical vector that counts missing values: num_missing
+	  num_missing<-sapply(missing,sum)
+
+	# Count missing values
+	  sum(is.na(weather6))
+
+	# Find indices of NAs in Max.Gust.SpeedMPH
+	   ind <- which(is.na(weather6$Max.Gust.SpeedMPH))
+	# Look at the full rows for records missing Max.Gust.SpeedMPH
+           weather6[ind, ]
+
+        # If usefulness is "Not Useful", make 0, else 1 
+	  learning_platform_usefulness %>% mutate(usefulness = if_else(usefulness == "Not Useful", 0, 1))
+
+	
+	
+	
+*************************************************************************************************************************************************************************
+
+# Cleaning Data
+	# Remove X's from day column
+          weather3$day <- str_replace(weather3$day,"X","")
+
+	# Replace empty cells in events column
+          weather6$events[weather6$events == " "] <- "None"
+
+*************************************************************************************************************************************************************************
+
+# Plotting and Visualization
+	gapminder_1952 <- gapminder %>% filter(year == 1952)
+	ggplot(gapminder_1952, aes(x = pop, y = gdpPercap)) + geom_point()
+
+# Scatterplot
+	ggplot(gapminder_1952,aes(x=pop,y=lifeExp))+ geom_point()
+
+# Putting the x-axis on a log scale
+	ggplot(gapminder_1952, aes(x = pop, y = lifeExp)) + geom_point()+ scale_x_log10()	
+
+# Putting the x and y-axes on a log scale	
+	ggplot(gapminder_1952,aes(x=pop,y=gdpPercap))+ geom_point() + scale_x_log10()+ scale_y_log10()
+
+# Adding color to a scatter plot
+	ggplot(gapminder_1952, aes(x=pop,y=lifeExp, color=continent))+ geom_point() + scale_x_log10()
+
+# Adding size and color to a plot
+	ggplot(gapminder_1952, aes(x = pop, y = lifeExp, color = continent,size=gdpPercap)) + geom_point() + scale_x_log10()
+
+# Creating a subgraph for each continent
+	ggplot(gapminder_1952, aes(x=pop,y=lifeExp)) + geom_point() + scale_x_log10() + facet_wrap(~continent)
+
+# Summarize and Visualize
+	by_year <- gapminder %>% group_by(year) %>% summarize(medianLifeExp = median(lifeExp),maxGdpPercap = max(gdpPercap))
+	ggplot(by_year, aes(x =year , y = medianLifeExp)) + geom_point() + expand_limits(y = 0)
+
+# Line Plot
+	ggplot(by_year_continent, aes(x=year,y=medianGdpPercap,color=continent)) + geom_line() + expand_limits(y = 0)
+
+# Bar plot
+	ggplot(by_continent, aes(x = continent, y = medianGdpPercap)) + geom_col()
+
+# Histogrm 
+	ggplot(gapminder_1952, aes(x = pop_by_mil)) + geom_histogram(bins = 50)
+
+# Histogram with Scale_log_10
+	ggplot(gapminder_1952, aes(x = pop)) + geom_histogram(bins = 50) + scale_x_log10()
+
+# Box Plot
+	ggplot(gapminder_1952, aes(x = continent, y = gdpPercap)) + geom_boxplot() + scale_y_log10()
+
+# Add a title to this graph:
+	ggplot(gapminder_1952, aes(x = continent, y = gdpPercap)) + geom_boxplot() + scale_y_log10()+ ggtitle("Comparing GDP per capita across continents")
+
+# Horizontal bar plot
+	ggplot(mc_responses_reordered, aes(WorkInternalVsExternalTools)) +  geom_bar() + coord_flip()
+
+# rotate x-axis text by 90 degrees
+	ggplot(usefulness_by_platform, aes(x = learning_platform, y = avg_usefulness)) + geom_point() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+# rename y and x axis labels
+	ggplot(usefulness_by_platform, aes(x = learning_platform, y = avg_usefulness)) + geom_point() + labs(x = "Learning Platform", y = "Percent finding at least somewhat useful")
+
+# change Y axis scale to percentage
+	ggplot(usefulness_by_platform, aes(x = learning_platform, y = avg_usefulness)) + geom_point() + scale_y_continuous(labels = scales::percent)
+
+
+*************************************************************************************************************************************************************************
+# Using Maps in R Programming (library : leaflet;)
+
+# Create a leaflet map with default map tile
+	leaflet() %>% addTiles()
+
+# Print only the names of the map tiles in the providers list 
+	names(providers)
+
+# Adding a Custom Map Tile
+	leaflet() %>% addProviderTiles("OpenRailwayMap")
+
+# Set the provider argument to "CartoDB"
+	leaflet() %>% addProviderTiles(provider = "CartoDB")
+
+# Create a leaflet map that uses the Esri provider tile 
+	leaflet() %>% addProviderTiles("Esri.NatGeoWorldMap")
+
+# Setting the Default Map View
+	leaflet(options = leafletOptions(dragging = FALSE, minZoom = 14, maxZoom = 18)) %>% addProviderTiles("CartoDB")
+
+# Set default zoom level 
+leaflet()  %>%  addProviderTiles("CartoDB")  %>% setView(lng = 76.6500, lat = 9.7551, zoom = 6)
+
+
+# Set minZoom and dragging 
+leaflet(options = leafletOptions(minZoom = 12, dragging = TRUE))  %>% addProviderTiles("CartoDB")
+
+
+# Set max bounds of map
+leaflet(options = leafletOptions(minZoom = 12, dragging = TRUE))  %>% addProviderTiles("CartoDB") %>% setMaxBounds(lng1 = 76.8995 + .05,  
+														   lat1 = 8.5665 + .05,  
+														   lng2 = 76.8995 - .05, 
+														   lat2 = 8.5665 - .05) 
+
+
+# Add Markers
+	iiit_hq <- tibble(hq = c("IIIT Kottayam - Main Campus", "IIIT Kottayam - Off Campus"),
+			  lon = c(76.6500,76.8995 ),
+			  lat = c(9.755, 8.5665))
+
+	leaflet() %>% addTiles() %>% addMarkers(lng = iiit_hq$lon, lat = iiit_hq$lat)
+
+
+ 
+# add popups
+  leaflet() %>% 
+		addProviderTiles("CartoDB") %>% 
+                addMarkers(lng = 76.6500, lat = 9.7551, popup = "IIIT Kottayam Main Campus") %>%
+	        addMarkers(lng = 76.8995, lat = 8.5665, popup = "IIIT Kottayam Off Campus")
+
+# Add circle
+	leaflet() %>% addProviderTiles("CartoDB") %>% addMarkers(lng = iiit_hq$lon, lat = iiit_hq$lat) %>% addCircleMarkers(lng = iiit_hq$lon, lat = iiit_hq$lat)
+
+# Add circle radius and color 
+	leaflet() %>% 
+		addProviderTiles("CartoDB") %>% 
+		addMarkers(lng = iiit_hq$lon, lat = iiit_hq$lat) %>% 
+		addCircleMarkers(lng = iiit_hq$lon, lat = iiit_hq$lat, radius = 3,color = "red")
+
+
+
+	
+	
+	
+	
+
+

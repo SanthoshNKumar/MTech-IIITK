@@ -1,0 +1,5 @@
+"0",""
+"0","ggplot() + geom_line(data =monthwise_cases, aes(x=month,y=Conf),color='red') + "
+"0","           geom_line(data =monthwise_cases, aes(x=month,y=death),color='blue') + "
+"0","           geom_line(data =monthwise_cases, aes(x=month,y=recov),color='black') + geom_point()"
+"0",""

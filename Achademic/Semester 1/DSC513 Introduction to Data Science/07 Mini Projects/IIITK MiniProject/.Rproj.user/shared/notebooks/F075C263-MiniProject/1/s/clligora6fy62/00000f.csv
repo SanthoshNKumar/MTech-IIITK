@@ -1,0 +1,7 @@
+"0","# Total cases reported so far"
+"0",""
+"0","sum(country$newCases)"
+"1","[1]"
+"1"," 606354330"
+"1","
+"

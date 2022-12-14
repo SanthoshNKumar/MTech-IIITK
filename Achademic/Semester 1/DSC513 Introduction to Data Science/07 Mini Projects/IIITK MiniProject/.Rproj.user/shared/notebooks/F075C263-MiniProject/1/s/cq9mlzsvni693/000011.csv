@@ -1,0 +1,3 @@
+"0","df_list <- list(Countrywise_ConfCases, death_Cases_country, recov_Cases_country)"
+"0","df_list <- df_list %>% reduce(full_join, by='country')"
+"0",""

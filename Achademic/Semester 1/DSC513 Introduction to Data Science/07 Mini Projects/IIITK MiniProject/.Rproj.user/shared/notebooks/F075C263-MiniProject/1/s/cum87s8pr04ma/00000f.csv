@@ -1,0 +1,6 @@
+"0",""
+"0","daily = country %>% select('date','recov','conf','death') %>% group_by(date) %>% summarise(total_recov = sum(recov),"
+"0","                                                                                           total_conf = sum(conf),"
+"0","                                                                                           total_death = sum(death))"
+"0",""
+"0","head(daily)"

@@ -1,0 +1,277 @@
+# Index
+   : In r Index of values for vector or list always starts from 1
+
+# Supress Warnings
+	options(warn=-1) 
+
+# Install package 
+	install.packages("plotrix")
+
+# Call the Library
+	library(plotrix)
+
+# Variable assignment
+	myString <- "Santhosh"
+	print(myString)
+
+	x <- 42
+
+# Data type : logical
+	v <- True
+	print(class(v))
+	Output : "logical"
+
+# Data type : Numeric
+	num <-23.5
+	print(class(num))
+	Output : "numeric"
+
+# Data type : Integer
+	num1 <- 2L
+	print(class(num1))
+	Output : "integer"
+
+# Data type : Character	
+	v <- "True"
+	print(class(v))
+	Output : "character"
+
+# Vectors
+	colors <- c('red','green',"yellow")
+	print(colors[2])
+	Output : 'green'
+
+# Create Matrix
+	M = matrix(c(1,2,3,4,5,6),nrow = 3,ncol = 2,byrow = TRUE)
+
+# Matrix Creation
+	******************************************
+	matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3)
+	******************************************
+
+	******************************************
+	matrix(1:10, ncol = 2)
+	******************************************
+
+	******************************************
+	vector1=1:9
+	matrix(vector1, nrow = 3)
+	******************************************
+
+	******************************************
+	#  create a matrix of zeros
+	zero_matrix <- matrix(rep(0, 9),ncol = 3, nrow = 3)
+
+	******************************************
+	
+# Check the dimention of the matrix
+
+	dim(M)
+	Output : 3,2
+
+# Factors: It stores the vector along with the distinct values of the elements in the vector as labels.
+
+	colors <- c('green','green','yellow','red','red','red','green')
+	factor_apple <- factor(apple_colors)
+	print(factor_apple)
+		Output : green red yellow
+	print(nlevels(factor_apple))
+		Output : 3
+
+# If else Statement
+
+	medium <- "LinkedIn"
+	num_views <- 10000
+
+	if(medium == 'instagram'){
+	  print("Great,You have a instagram account")
+	}else{
+	  print("You dont have instagram account")
+	}
+
+# for loop
+	
+	******************************************
+	Example 1:
+	for(i in 1:10){
+  		print(i)
+	}
+	******************************************
+
+
+	******************************************
+	Example 2:
+	x <- c(2,5,3,9,8,11,6)
+
+	count <- 0
+
+	for (val in x) {
+  		if(val %% 2 == 0)
+    		count = count+1
+		}
+	print(count)
+	******************************************
+
+
+# While Loop
+
+	******************************************
+	Example 1:
+	i <-1
+
+	while (i<5) {
+  		print(i)
+  		i <- i +1
+	}
+	******************************************
+
+# Do while
+	
+	******************************************
+
+# Random number generator
+# create a vector which contains 12 random integer values between -10 and +10.
+	v = sample(-10:10, 12, replace=TRUE)
+
+
+	******************************************
+
+# Create Function
+	******************************************
+	pow_two <-function(x){
+		
+	   x ˆ 2
+
+	}
+
+	******************************************
+
+# default Datasets
+	******************************************
+	df1 = data.frame(state.x77)
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+
+# DataFrames 
+	******************************************
+	# Create Data Frames using read csv
+
+	******************************************
+	# Create Empty Dataframe
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	******************************************
+
+	
+# lapply : lapply() function applies a certain operation to all the elements of the list
+	 
+           - Apply functions over list or vector
+	   - output = list
+	
+	
+	****************************************
+	names <- c("a", "b","c","d","d")
+	print(names)
+
+	lapply(names, toupper)
+	****************************************
+
+# sapply : sapply() helps us in applying functions on a list.
+	   
+	   - Apply functions over list or vector
+	   - try to simplify list to array/vector
+
+	****************************************
+
+	df <- data.frame( x=c(1,2,3,4,5,6),
+                          y=c(3,2,4,2,34,5))
+
+	sapply(df, max)
+ 	 Output :
+          	 x  y 
+   	         6 34
+
+	****************************************
+
+	del <- list(pop=19000000, place =c("Janpath","Saket","Ansari nagar","Gautham Nagar"),capital= TRUE)
+	sapply(del, nchar)
+	Output :
+		7  5 12 13
+
+	****************************************
+
+# tapply : It helps us to create a subset of a vector and then apply some functions to each of the subsets
+	   It helps us to compute statistical measures (mean, median, min, max, etc..) 
+	
+	***************************************
+	library(tidyverse)
+
+	head(diamonds)
+	
+	print("Average price for each cut of diamond:")
+	tapply(diamonds$price, diamonds$cut, mean)
+
+	****************************************
+
+# 
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+  

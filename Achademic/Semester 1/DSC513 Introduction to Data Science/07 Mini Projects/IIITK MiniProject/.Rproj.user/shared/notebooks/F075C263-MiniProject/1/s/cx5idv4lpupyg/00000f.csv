@@ -1,0 +1,6 @@
+"0",""
+"0","ggplot(data = head(top_10_Country_lowest_recovCases),aes(x = reorder(country,totalCases_recov),"
+"0","                                                         y = totalCases_recov,fill = country)) + "
+"0","                geom_bar(stat = ""identity"") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +"
+"0","                    labs(title = ""Countries with lowest number of cases"") + xlab(""Country"")"
+"0",""

@@ -1,0 +1,32 @@
+{
+    "id": "0DE99601",
+    "path": "~/MiniProject/IIITK MIniProject/MiniProject.Rmd",
+    "project_path": "MiniProject.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1668773080797.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "790,40",
+        "scrollLine": "785",
+        "last_setup_crc32": "",
+        "rmdVisualMode": "false",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "2:0",
+        "chunk_output_type": "console"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1668782471,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1668782471923,
+    "read_only": false,
+    "read_only_alternatives": []
+}

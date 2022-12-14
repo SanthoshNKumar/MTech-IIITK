@@ -1,0 +1,5 @@
+"0",""
+"0","df_list = mutate(df_list,recovery_rate = totalCases_recov / totalCases_conf)"
+"0",""
+"0","df_list = mutate(df_list,mortality_rate = totalCases_death / totalCases_conf)"
+"0",""

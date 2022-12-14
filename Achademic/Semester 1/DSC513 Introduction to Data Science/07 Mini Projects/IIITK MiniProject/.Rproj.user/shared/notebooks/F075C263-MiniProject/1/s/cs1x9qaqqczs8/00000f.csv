@@ -1,0 +1,3 @@
+"0",""
+"0","conf_Cases_daily$DailyTrend <- ifelse(conf_Cases_daily$DailyTrend < 0,0,conf_Cases_daily$DailyTrend)"
+"0",""

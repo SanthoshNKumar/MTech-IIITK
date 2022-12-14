@@ -1,0 +1,5 @@
+"0",""
+"0","ggplot(daily,aes(x = date, y = recovery_rate)) + "
+"0","        geom_line() + "
+"0","        labs(title = ""Recovery rate daily basis"")"
+"0",""

@@ -1,0 +1,6 @@
+"0",""
+"0","data = head(country %>% group_by(country) %>% summarise(Active_cases = sum(newActive)) %>% arrange(desc(Active_cases)),40) "
+"0",""
+"0","ggplot(data,aes(x = reorder(country,Active_cases),y = Active_cases,fill = Active_cases)) + "
+"0","geom_bar(stat = ""identity"") + coord_flip() +theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))"
+"0",""

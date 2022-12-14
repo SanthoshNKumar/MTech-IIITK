@@ -1,0 +1,117 @@
+library(mosaic)
+library(statisticalModeling)
+
+# Find the mean cost broken down by sex
+	mosaic::mean(Cost~Sex, data = AARP)
+
+# Designing, Training and evaluating Models
+	Select a model architecture
+	  - Linear model (lm)
+	  - Recursive partitioning: rpart()
+
+# Build models: handicap_model_1
+	handicap_model_1 <- lm(net~age, data = Runners)
+
+# visualize the models
+	fmodel(handicap_model_1)
+
+
+# Using the recursive partitioning model architecture
+
+library(rpart)
+model_2<-rpart(net~age+sex,data=Runners,cp=0.002)  # cp: complexity parameter
+
+*** complexity parameter(cp):  that allows you to dial up or down the complexity of the model being built
+
+# Evaluating Models  using 'predict' function
+
+	# Build Linear Model
+	insurance_cost_model<-lm(Cost~Age+Sex+Coverage,data=AARP)
+	
+	# Get Sample data for prediction
+	example_vals<-data.frame(Age=60,Sex="F",Coverage=200)
+
+	# Predict the result
+	predict(insurance_cost_model,example_vals)
+
+# Evaluating Models  using 'evaluate_model' function
+
+	# evaluate_model(insurance_cost_model,example_vals)
+
+expand.grid() function in R Language is used to create a data frame with all the values that can be formed with the combinations of all 
+the vectors or factors passed to the function as argument.
+
+	ex : x1 <- c("abc", "cde", "def")
+	     x2 <- c(1, 2, 3)
+	     x3 <- c("M", "F")
+
+	     expand.grid(x1, x2, x3)
+
+expand.grid() basically for Data Augmentation 
+
+
+# Assessing Prediction Performance
+	base_model <- lm(net ~ age + sex, data = Runners_100)
+	base_model_output <- predict(base_model, newdata = Runners_100)
+
+	aug_model <- lm(net ~ age + sex + previous, data = Runners_100)
+	aug_model_output <- predict(aug_model, newdata = Runners_100)
+
+	mean((base_model_output - aug_model_output) ˆ 2, na.rm = TRUE)
+
+
+
+	# Comparing with Expected output values
+
+	# Find the case-by-case differences
+	base_model_differences <- with(Runners_100, net - base_model_output)
+	aug_model_differences <- with(Runners_100,net-aug_model_output)
+
+	# Calculate mean square errors
+	mean(base_model_differences ˆ 2)
+
+
+# Create Subset of data for Training and Testing/ validation
+	
+	Runners_100$training_cases <- rnorm(nrows(Runners_100)) >0
+	
+	trainig_data = subset(Runners_100, training_cases))
+
+	testing_data = subset(Runners_100, !training_cases))
+
+# cross-validated prediction errors : # Calculate MSE for many different trials
+	model <- lm(net ~ age + sex, data = Runners_100)
+	in_sample <- evaluate_model(model, data = Runners_100)
+	trials <- cv_pred_error(model)
+
+
+# Find the Confidence intervals on trials and compare to training_error
+	model <- lm(net ~ age + sex, data = Runners_100)
+	in_sample <- evaluate_model(model, data = Runners_100)
+	in_sample_error <- with(in_sample, mean((net - model_output)ˆ2, na.rm = TRUE))
+	trials <- cv_pred_error(model)
+	
+	mosaic::t.test(~ mse, mu = in_sample_error, data = trials)
+
+# Compare two sets of Cross-validation errors
+	base_model <- lm(net ~ age + sex, data = Runners_100)
+	aug_model  <- lm(net ~ age + sex + previous, data = Runners_100)
+	trials <- cv_pred_error(base_model, aug_model)
+
+	t.test(mse ~ model, data = trials)
+
+# The maximum error rate
+	null_model <- rpart(start_position ~ all_the_same, data = Runners)
+	null_model_output <- evaluate_model(null_model, data = Runners, type = "class")
+	
+	with(data = null_model_output, mean(start_position != model_output, na.rm = TRUE))
+
+	null_model_output$random_guess <- shuffle(Runners$start_position)
+
+	# find the error rate
+	with(data = null_model_output, mean(start_position != random_guess, na.rm = TRUE))
+	
+	 
+
+	
+	

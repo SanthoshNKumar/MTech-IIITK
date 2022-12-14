@@ -1,0 +1,6 @@
+"0","# Total cases reported in India"
+"0","sum(country[country$country == ""India"",]$newCases)"
+"1","[1]"
+"1"," 44626427"
+"1","
+"
