@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* link;
+};
+
+// Insert at End
+void insert_node(struct Node *head,int data){
+    struct Node *ptr,*temp;
+    ptr = head;
+    
+    temp = (struct Node*)malloc(sizeof(struct Node*));
+    
+    temp->data = data;
+    temp->link = NULL;
+    
+    while(ptr->link !=NULL){
+        ptr = ptr->link;
+    }
+    
+    ptr->link = temp;
+}
+
+void display_linkedList(struct Node *head){
+    struct Node *ptr = head;
+    
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->link;
+    }
+}
+
+// Insert at Beginning
+struct Node* add_beginning(struct Node *head,int data){
+    struct Node *ptr;
+    ptr = (struct Node*)malloc(sizeof(struct Node*));
+    
+    ptr->data = data;
+    ptr->link = NULL;
+    
+    ptr->link = head;
+    head= ptr;
+
+    return head;
+}
+
+
+struct Node* insert_node_middle(struct Node *head,struct Node *newNode,int position){
+    struct Node *temp = head;
+    
+    //struct Node *newNode= malloc(sizeof(struct Node));
+    
+    for(int i=1; i < position; i++){
+        if(temp->link != NULL) {
+            temp = temp->link;
+        }
+    }
+    
+    newNode->link = temp->link;
+    temp->link = newNode;
+    
+    return head;
+}
+
+
+int main()
+{
+    struct Node *head = (struct Node*)malloc(sizeof(struct Node*));
+    head->data = 100;
+    head->link = NULL;
+    
+    insert_node(head,66);
+    
+    insert_node(head,50);
+    insert_node(head,22);
+    
+    head= add_beginning(head,33);
+    
+    display_linkedList(head);
+    
+    
+    printf("\n");
+    struct Node *newNode= malloc(sizeof(struct Node));
+    
+    newNode->data = 77;
+    newNode->link = NULL;
+    int pos = 4;
+    
+    struct Node *ptr= insert_node_middle(head,newNode,pos);
+    
+    display_linkedList(ptr);
+    
+    printf("\n");
+    
+    return 0;
+}

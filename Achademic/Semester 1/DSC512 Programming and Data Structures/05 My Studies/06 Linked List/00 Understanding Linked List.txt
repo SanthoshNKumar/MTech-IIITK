@@ -1,0 +1,73 @@
+Linked list:
+	- A linked list is a sequence of data structures, which are connected together via links.
+	- Linked List is a sequence of links which contains items. Each link contains a connection to another link. 
+	- Linked list is the second most-used data structure after array. 
+
+	- Like arrays, Linked List is a linear data structure. Unlike arrays, linked list elements are not stored at a contiguous location; the elements are linked using pointers. 
+	- They include a series of connected nodes.
+
+
+Note: In Linked list each node stores the data and the address of the next node. 
+      - In linked List, address of the first node a special name called HEAD. Also, the last node in the linked list can be identified because its next portion points to NULL.
+
+Representation of Linked List:
+	- Each node in linked List consists of 'A data Item' and 'An address of another node'
+
+
+Types of Linked List
+	1. Simple Linked List − one can move or traverse the linked list in only one direction
+	2. Doubly Linked List −  one can move or traverse the linked list in both directions (Forward and Backward)
+	3. Circular Linked List −  the last node of the linked list contains the link of the first/head node of the linked list in its next pointer and the 
+                                   first/head node contains the link of the last node of the linked list in its prev pointer
+	4. Circluar Doubly Linked List
+
+Basic operations on Linked Lists:
+	1. Deletion
+	2. Insertion
+	3. Search
+	4. Display
+
+operations on Linked Lists:
+1.Insert in begining
+2.Insert at last
+3.Insert at any random location
+4.Delete from Beginning
+5.Delete from last
+6.Delete node after specified location
+7.Search for an element
+
+Terminology while defining linked list
+
+
+1./* Node Repsentation */
+	struct node
+	{
+  	  int data;
+	  struct node *next;
+	};
+
+2. /* Initialize nodes */
+	struct node *one = NULL;
+	struct node *two = NULL;
+
+3. /* Allocate memory */
+	one = malloc(sizeof(struct node));
+	two = malloc(sizeof(struct node));
+
+4. /* Assign data values */
+	one->data = 1;
+
+5. /* Connect nodes */
+	one->next = two;
+
+6. /* Save address of first node in head */
+	head = one;
+
+
+Linked List Applications:
+	- Dynamic memory allocation
+	- Implemented in stack and queue
+	- In undo functionality of softwares
+	- Hash tables, Graphs
+
+

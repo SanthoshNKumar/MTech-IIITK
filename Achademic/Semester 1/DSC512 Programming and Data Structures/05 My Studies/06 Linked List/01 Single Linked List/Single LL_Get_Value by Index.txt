@@ -1,0 +1,136 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+
+
+struct Node{
+    int data;
+    struct Node* link;
+};
+
+void insert_node(struct Node *head,int data){
+    struct Node *ptr,*temp;
+    ptr = head;
+    
+    temp = (struct Node*)malloc(sizeof(struct Node*));
+    
+    temp->data = data;
+    temp->link = NULL;
+    
+    while(ptr->link !=NULL){
+        ptr = ptr->link;
+    }
+    
+    ptr->link = temp;
+}
+
+void display_linkedList(struct Node *head){
+    struct Node *ptr = head;
+    
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->link;
+    }
+}
+
+struct Node* add_begging(struct Node *head,int data){
+    struct Node *ptr;
+    ptr = (struct Node*)malloc(sizeof(struct Node*));
+    
+    ptr->data = data;
+    ptr->link = NULL;
+    
+    ptr->link = head;
+    head= ptr;
+
+    return head;
+}
+
+
+int count_nodes(struct Node *head){
+    int count =0;
+    
+    if(head ==NULL){
+        printf("Linked list is Empty");
+    }
+    
+    struct Node *ptr = head;
+    
+    while(ptr!=NULL){
+        count++;
+        ptr= ptr->link;
+    }
+    return count;
+}
+
+int getindex(struct Node* head, int x)
+{
+    struct Node *current = head;  // Initialize current
+    
+    int count =0;
+    while (current != NULL)
+    {
+        if (current->data == x)
+            return count;
+        current = current->link;
+        count++;
+    }
+    return 0;
+}
+
+bool search(struct Node* head, int x)
+{
+    struct Node *current = head;  // Initialize current
+    while (current != NULL)
+    {
+        if (current->data == x)
+            return true;
+        current = current->link;
+    }
+    return false;
+}
+
+int get_value(struct Node* head, int index)
+{
+ 
+    struct Node* current = head;
+    int count = 0;
+ 
+    while (current != NULL) {
+        if (count == index)
+            return (current->data);
+        count++;
+        current = current->link;
+    }
+}
+
+
+
+int main()
+{
+    struct Node *head = (struct Node*)malloc(sizeof(struct Node*));
+    head->data = 45;
+    head->link = NULL;
+    
+    insert_node(head,66);
+    
+    insert_node(head,70);
+    
+    head= add_begging(head,33);
+    
+    printf("Value at the index 3 is : %d \n",get_value(head,3));
+    
+    printf("Value at the index 0 is : %d \n",get_value(head,0));
+    
+    printf("Value at the index 2 is : %d \n",get_value(head,2));
+    
+    return 0;
+}

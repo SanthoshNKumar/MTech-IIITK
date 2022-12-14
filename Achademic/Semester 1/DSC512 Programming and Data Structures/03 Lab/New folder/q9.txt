@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+  int data;
+  struct Node* link;
+};
+
+struct Node* head = NULL;
+
+void insert_node(int val){
+    
+    struct Node *ptr = head;
+    struct Node *temp = (struct Node*)malloc(sizeof(struct Node));
+    
+    temp->data = val;
+    temp->link = NULL;
+    
+    if(head == NULL){
+        head = temp;
+    }else{
+        while(ptr->link){
+            ptr=ptr->link;
+        }
+        
+        ptr->link = temp;
+    }
+}
+
+void display(struct Node* head){
+    struct Node* ptr = head;
+    
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->link;
+    }
+}
+
+int getindex(struct Node* head,int x){
+    struct Node *current = head;
+    
+    int count =0;
+    while(current !=NULL){
+        if(current->data == x){
+            return count;
+        }
+        current= current->link;
+        count++;
+    }
+    
+    return -1;
+}
+
+struct Node* insert_node_middle(struct Node* head,struct Node* newNode,int position){
+    struct Node* temp = head;
+    
+    for(int i=0;i<position;i++){
+        if(temp->link!=NULL){
+            temp = temp->link;
+        }
+    }
+    
+    newNode->link = temp->link;
+    temp->link = newNode;
+    
+    return head;
+}
+
+int main(){
+    int val,val1;
+    
+    scanf("%d",&val);
+    
+    while(val!=-999){
+        
+        insert_node(val);
+        scanf("%d",&val);
+    }
+    
+    scanf("%d%d",&val,&val1);
+    
+    int pos = getindex(head,val);
+    
+    if(pos == -1){
+        printf("Not Found");
+    }
+    else{
+        
+        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        newNode->data = val1;
+        newNode->link = NULL;
+    
+        struct Node* ptr= insert_node_middle(head,newNode,pos);
+    
+        display(ptr);
+        
+    }
+    return 0;
+    
+}

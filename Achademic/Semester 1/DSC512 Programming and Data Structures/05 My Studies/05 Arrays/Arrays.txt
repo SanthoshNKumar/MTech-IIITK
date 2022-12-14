@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    int marks[5];
+    
+    marks[0]=80;//initialization of array  
+    marks[1]=60;  
+    marks[2]=70;  
+    marks[3]=85;  
+    marks[4]=75;  
+    
+    for(int i=0;i<5;i++){
+        printf("%d",marks[i]);
+        printf("\n");
+    }
+}
+
+
+**********************************************************
+
+# Get the lenth of the array
+
+#include <stdio.h>
+
+int main()
+{
+    int values[] = {100,200,300,400,500,100};
+    
+    int n = sizeof(values)/sizeof(values[0]);
+    
+    printf("%d",n);
+    
+}
+
+
+**********************************************************
+

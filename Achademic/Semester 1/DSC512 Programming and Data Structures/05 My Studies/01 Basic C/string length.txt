@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    
+    char str[] = "THIS IS MY MACHINE";
+    int i;
+    
+    printf("%s",str);
+    
+    printf("\n");
+    for (i = 0; str[i] != '\0'; ++i);
+    
+    printf("Length of the string: %d", i);
+    
+
+    return 0;
+}
+
+*************************************************
+#include <stdio.h>
+#include<string.h>
+
+int getStringLength(char stringChr[]){
+    int i;
+    for (i = 0; stringChr[i] != '\0'; ++i);
+    
+    return i;
+}
+
+int main()
+{
+    
+    char str[] = "THIS IS MY MACHINE";
+    
+    printf("Length of the string: %d", getStringLength(s));
+
+    return 0;
+}
+
+
+**********************************************************
+
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    char a[] = "Hi hi";
+    
+    printf("%zu",strlen(a));
+    
+    //printf("%s",a);
+}
+
+*************************************************************

@@ -1,0 +1,7 @@
+A constant-time algorithm is one that takes the same amount of time, regardless of its input. 
+
+
+Examples:
+	Given two numbers, report the sum.
+	Given key-value hash table, return value for key.
+	Given a list of numbers, report the result of adding the first element to itself 1,000,000 times.

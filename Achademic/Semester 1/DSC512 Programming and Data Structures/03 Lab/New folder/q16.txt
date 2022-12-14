@@ -1,0 +1,136 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+  struct node *prev;
+  struct node *next;
+  int data;
+};
+
+struct node *head;
+
+struct node* create(int data){
+    struct node* new_node = (struct node*)malloc(sizeof(struct node));
+    
+    if(new_node == NULL){
+        return NULL;
+    }
+    
+    new_node->data = data;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+    
+    return new_node;
+}
+
+
+void append(int data){
+    
+    struct node* new_node = create(data);
+    if(new_node){
+        if(head ==NULL){
+            new_node->next = new_node;
+            new_node->prev = new_node;
+            head = new_node;
+            return;
+        }
+        
+        head->prev->next = new_node;
+        new_node->prev = head->prev;
+        new_node->next = head;
+        head->prev = new_node;
+    }
+}
+
+
+int get_size(){
+    if(head == NULL){
+        return 0;
+    }
+    
+    struct node* temp = head;
+    int count =0;
+    
+    do{
+        count +=1;
+        temp = temp->next;
+    }while(temp != head);
+    
+    return count;
+}
+
+void delet_mid(int position) {
+    
+    if(position <=0){
+        printf("Invalid");
+    }
+    
+    else if(position > get_size()){
+        //printf("Invalid");
+    }
+    
+    else{
+        struct node *temp = head;
+        struct node *prev = NULL;
+        
+        int i =1;
+        
+        while(i<position){
+            prev = temp;
+            temp = temp->next;
+            i +=1;
+        }
+        
+        prev->next = temp->next;
+        temp->next->prev = prev;
+        free(temp);
+        temp = NULL;
+    }
+}
+
+void display_reverse(struct node* temp){
+    if(temp->next == head){
+        printf("%d ",temp->data);
+        return;
+    }
+
+    display_reverse(temp->next);
+    printf("%d ",temp->data);
+}
+
+
+void display(){
+    struct node * ptr;
+    ptr = head;
+    
+    if(head == NULL){
+        
+    }else{
+        while(ptr->next!=head){
+            printf("%d ",ptr->data);
+            ptr = ptr->next;
+        }
+        printf("%d ",ptr->data);
+    }
+}
+
+
+int main(){
+    int val;
+    scanf("%d",&val);
+    
+    while(val!=-999){
+        append(val);
+        scanf("%d",&val);
+    }
+    
+    if(get_size() <3){
+        printf("Underflow !!! Minimum 3 elements must be entered");
+        
+    }else{
+        delet_mid(3);
+        display_reverse(head);
+    }
+    
+   
+}

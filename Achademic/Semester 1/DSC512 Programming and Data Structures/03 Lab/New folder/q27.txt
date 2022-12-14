@@ -1,0 +1,96 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node{
+    char data[10];
+    struct node *left;
+    struct node *right;
+} *searchParentNode;
+
+struct node *createNode(char value[]){
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
+    strcpy(newNode-> data,value);
+    newNode-> left = NULL;
+    newNode-> right = NULL;
+    return newNode;
+}
+
+struct node *searchNode(struct node *node,char value[]){
+    if(node == NULL){
+        return NULL;
+    }
+    if(strcmp(node->data,value) ==0){
+        searchParentNode = node;
+    }
+    
+    searchNode(node-> left,value);
+    searchNode(node-> right,value);
+    
+    return searchParentNode;
+}
+
+void insertRightChild(struct node *root,char value[]){
+    struct node *newNode = createNode(value);
+    root -> right = newNode;
+}
+
+void insertLeftChild(struct node *root,char value[]){
+    struct node *newNode = createNode(value);
+    root -> left = newNode;
+}
+
+
+void inOrderTraversal(struct node *root){
+    if(root == NULL){
+        return;
+    }
+    inOrderTraversal(root ->left);
+    printf("%s, ",root->data);
+    inOrderTraversal(root -> right);
+    
+}
+
+int main(){
+    struct node *root = NULL,*temp,*ptr;
+    char input[3][10],m[10],n[10];
+    int i;
+    
+    do{
+        scanf("%s",n);
+        if(strcmp(n,"-999") == 0){
+            break;
+        }
+        strcpy(input[0],n);
+        i = 1;
+        
+        do{
+            scanf("%s",m);
+            if(strcmp(m,"-999") == 0){
+                break;
+            }
+            strcpy(input[i++],m);
+        }while(strcmp(m,"-999")!=0);
+        
+        if(root == NULL){
+            struct node * newNode = createNode(n);
+            root = newNode;
+        }else{
+            struct node *parent = searchNode(root,n);
+            if(strcmp(input[1], "NULL")!=0){
+                insertLeftChild(parent,input[1]);
+            }
+            
+            if(strcmp(input[2],"NULL") !=0){
+                insertRightChild(parent,input[2]);
+            }
+        }
+    }while(strcmp(n,"-999")!=0);
+    
+    if(root == NULL){
+        printf("Empty Tree");
+    }else{
+        printf("In-Order Traversal:");
+        inOrderTraversal(root);
+    }
+}

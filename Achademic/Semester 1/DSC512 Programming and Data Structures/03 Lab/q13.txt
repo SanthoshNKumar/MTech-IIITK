@@ -1,0 +1,152 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+    struct Node *prev;
+    int data;
+    struct Node *next;
+};
+
+void append(struct Node** head_ref,int _data){
+    
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+    
+    struct Node* last = *head_ref;
+    
+    new_node->data = _data;
+    
+    new_node->next = NULL;
+    
+    if(*head_ref == NULL){
+        new_node->prev = NULL;
+        *head_ref = new_node;
+        return;
+    }
+    
+    while(last->next !=NULL){
+        last = last->next;
+    }
+    
+    last->next = new_node;
+    
+    new_node->prev = last;
+    
+    return;
+}
+
+
+void display(struct Node* p){
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p = p ->next;
+    }
+    
+}
+
+int findsize(struct Node* node){
+    int res =0;
+    while(node!=NULL){
+        res++;
+        node = node->next;
+    }
+    
+    return res;
+}
+
+
+void insert_specified(struct Node* head,int loc,int item){
+    struct Node *ptr = (struct Node*)malloc(sizeof(struct Node));
+    
+    struct Node *temp;
+    
+    int i;
+    
+    temp = head;
+    for(int i =0;i<=loc;i++){
+        temp = temp ->next;
+        if(temp == NULL){
+            return;
+        }
+    }
+    
+    ptr->data = item;
+    ptr->next = temp ->next;
+    ptr->prev = temp;
+    temp->next = ptr;
+    temp->next->prev = ptr;
+}
+
+int search(struct Node** head_ref,int x){
+    
+    struct Node *temp = *head_ref;
+    
+    int pos = 0;
+    
+    while(temp->data != x && temp->next !=NULL){
+        pos ++;
+        
+        temp = temp ->next;
+    }
+    
+    if(temp->data != x){
+        return -1;
+    }
+    
+    return (pos +1);
+}
+
+int count(struct Node* head,int search_for){
+    struct Node* current = head;
+    int _count = 0;
+    while(current!=NULL){
+        if(current->data == search_for){
+            _count++;
+        }
+        current = current->next;
+        
+    }
+    
+    return _count;
+}
+
+int main(){
+    
+    struct Node* head = NULL;
+    
+    int val,val1,val2;
+    
+    scanf("%d",&val);
+    
+    while(val!= -999){
+        append(&head,val);
+        scanf("%d",&val);
+    }
+    
+    int _count = count(head,24);
+    
+    if(_count ==0){
+        printf("At least one element must be 24.");
+    }else{
+        
+        scanf("%d",&val1);
+        
+        if(_count >1){
+            
+            printf("%d occurrence of 24 found. Where should the insertion occur?\n",_count);
+            scanf("%d",&val2);
+            
+             val2 = val2-2;
+             
+             insert_specified(head,val2,val1);
+        }else{
+            if(_count !=0){
+                int x = search(&head,24);
+                insert_specified(head,(x-1),val1);
+                
+            }
+            
+        }
+        display(head);
+    }
+    
+}

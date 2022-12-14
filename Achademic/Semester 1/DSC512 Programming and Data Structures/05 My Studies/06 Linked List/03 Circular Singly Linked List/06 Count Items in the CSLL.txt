@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node *head=NULL;
+struct Node *tail=NULL;  
+
+void insert_node(int val)
+{
+    struct Node *temp=(struct Node*)malloc(sizeof(struct Node));
+    
+    temp->data=val;
+    
+    if(head==NULL){
+        head= temp;
+        tail = temp;
+        temp->next = head;
+    }
+    else{
+        tail->next = temp;
+        tail = temp;  
+        tail->next = head;  
+        }
+    }
+
+int count(struct Node* _node){  
+    
+    struct Node *current = _node;
+    int count = 0;
+    
+    if(_node == NULL){  
+    }  
+    else{  
+         do{  
+            current = current->next;  
+            count ++;
+        }while(current != _node);  
+    }
+    
+    return count;
+} 
+
+int main()
+{
+    
+    insert_node(55);
+    insert_node(88);
+    insert_node(99);
+
+    printf("%d",count(head));
+}

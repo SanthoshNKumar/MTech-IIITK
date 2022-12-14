@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+int main(){
+    
+    int number,number1;
+    scanf("%d",&number);
+    // printf("Input: \n");
+    // printf("%d",number);
+    
+    printf("\n");
+    
+    
+    int n, reversed =0,remainder,original;
+    
+    original = number;
+    number1 = number;
+    
+    while (number!=0){
+        remainder = number %10;
+        reversed = reversed *10 + remainder;
+        number /= 10;    
+    }
+    
+    if(original == reversed){
+        printf("Palindrome \n");
+        printf("%d",reversed);
+    }else{
+        if(number1 % 10 == 0){
+            
+            printf("Not Palindrome \n");
+            
+            char s1[20];
+            char s2[20];
+            
+            sprintf(s1,"%d",0);
+            sprintf(s2,"%d",reversed);
+            
+            strcat(s1,s2);
+        
+            printf("%s",s1);
+            
+        }
+        else{
+            printf("Not Palindrome \n");
+            printf("%d",reversed);
+        }
+    }
+    
+    return 0;
+    
+}

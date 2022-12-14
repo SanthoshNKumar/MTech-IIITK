@@ -1,0 +1,74 @@
+# Create doubly linked list 
+
+struct node   
+{  
+    struct node *prev;   
+    int data;  
+    struct node *next;   
+};
+
+
+
+
+******************************************************
+#include <stdio.h>
+#include<stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+
+void printLinkedList(struct Node* p){
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+}
+
+
+struct Node* head;
+
+int main()
+{
+    struct Node* one ;
+    struct Node* two ;
+    struct Node* three;
+    
+    one = (struct Node*)malloc(sizeof(struct Node));
+    two = (struct Node*)malloc(sizeof(struct Node));
+    three = (struct Node*)malloc(sizeof(struct Node));
+    
+    one->data = 1;
+    two->data = 2;
+    three->data = 3;
+    
+    one->next = two;
+    one->prev = NULL;
+    
+    two->next = three;
+    two->prev = one;
+    
+    three->next = NULL;
+    three->prev = two;
+    
+    head = one;
+    
+    printLinkedList(head);
+}
+
+******************************************************
+
+Operations :
+
+1. Insertion at beginning   
+2. Insertion at end
+3. Insertion after specified node
+4. Deletion at beginning
+5. Deletion at the end
+6. Deletion of the node having given data
+7. Searching
+8. Traversing
+
+

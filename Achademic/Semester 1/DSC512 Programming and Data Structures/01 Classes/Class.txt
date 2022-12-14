@@ -1,0 +1,93 @@
+7th August
+
+13th August
+
+14st August	
+
+20th August
+
+21st August	
+
+27th August
+
+28th August
+
+3rd September
+
+4th September
+
+10th September
+	- Mid Semester Exam1
+
+11th September
+	- Mid Semester Exam1
+
+17th September
+	- Mid Semester Exam1
+
+18th September
+
+24th September
+	- Non Linear Data structures
+	- Binary Tree
+	- Creating expression tree
+	- Creating Binary tree from general tree
+
+25th September
+	- 
+
+1st October
+	- Binary Tree Traversal  : PreOrder Travels
+	- Binary Tree Traversal  : Inorder Travels
+	- Binary Tree Traversal  : Postorder Travels
+	- Analysing Complexity for Different functions
+
+2nd October
+	- Holiday
+
+
+8th October
+	- Holiday
+
+9th Octoberni
+	- 11:00 AM
+		- Analysing Complexity for Recursive functions
+		- Binary Tree Traversal : Levelorder Travels
+	
+	- 2:00 PM
+		- Constructng Binary Tree from Traversal Results
+		- Binary Search tree
+		- Building Binary Search Tree
+		- Search;Insert;Delete Node in Binary Search Tree
+
+15th October
+	- Delete Node in Binary Search Tree
+	- Mirror Image of a Binary Search Tree
+	- Smallest element in Binary Search Tree
+	- Largest element in Binary Search Tree
+	- Huffman's Tree
+
+16th October
+	- Recursion Tree
+	- Space Complexity 
+	- Auxiliary Complexity
+
+30th October
+	-
+
+5th November
+	- Randomized Algorithms
+	- Deterministic and Non-deterministic Algorithms
+	- Quick Sort
+	- Randomized Quick Sort
+	- Las vegas Algorithms
+	- Monte Carlo Algorithms
+	- Hashing
+12th Nov
+	- Hashing
+
+19th Nov
+	- AVL Trees
+	  - Self Balancing Binary Trees
+
+

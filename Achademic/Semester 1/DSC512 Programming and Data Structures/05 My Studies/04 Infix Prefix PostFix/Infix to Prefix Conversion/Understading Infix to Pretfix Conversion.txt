@@ -1,0 +1,14 @@
+Step 1 : Reverse the expression
+
+Step 2: replace '(' with ')' and ')' with '('
+
+Step 3: Create a table with column 'Symbol' ; 'Stack'; 'Expression'
+
+Step 4: Remember the Priority of the operators PDMAS (Power(^);Division(\);Multiplication(*);Addition(+);Subtraction(-))
+
+Step 5: While evaluating place the operands on the 'Expression' and operator on the 'Stack'
+
+Step 6: Same as Infix to postfix expression
+
+Step 7: Reverse the expression
+

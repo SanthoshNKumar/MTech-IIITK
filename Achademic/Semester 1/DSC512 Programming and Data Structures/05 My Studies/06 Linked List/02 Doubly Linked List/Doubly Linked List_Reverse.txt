@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+
+void reverse(struct Node** head_ref)
+{
+    struct Node* temp = NULL;
+    struct Node* current = *head_ref;
+ 
+    while (current != NULL) {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
+    }
+ 
+    if (temp != NULL)
+        *head_ref = temp->prev;
+}
+
+struct Node* head;
+
+int main()
+{
+    struct Node* one ;
+    struct Node* two ;
+    struct Node* three;
+    struct Node* four;
+    struct Node* five;
+    
+    one = (struct Node*)malloc(sizeof(struct Node*));
+    two = (struct Node*)malloc(sizeof(struct Node*));
+    three = (struct Node*)malloc(sizeof(struct Node*));
+    four = (struct Node*)malloc(sizeof(struct Node*));
+    five = (struct Node*)malloc(sizeof(struct Node*));
+    
+    one->data = 17;
+    two->data = 42;
+    three->data = 16;
+    four->data = 18;
+    five->data = 39;
+    
+    one->next = two;
+    one->prev = NULL;
+    
+    two->next = three;
+    two->prev = one;
+    
+    three->next = four;
+    three->prev = two;
+    
+    four->next = five;
+    four->prev = three;
+    
+    five->next = NULL;
+    five->prev = four;
+    
+    head = one;
+    
+    struct Node* p = head;
+    
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+    
+    printf("\n");
+    reverse(&head);
+    
+    struct Node* p1 = head;
+    
+    while(p1!=NULL){
+        printf("%d ",p1->data);
+        p1 = p1->next;
+    }
+    
+    return 0;
+}

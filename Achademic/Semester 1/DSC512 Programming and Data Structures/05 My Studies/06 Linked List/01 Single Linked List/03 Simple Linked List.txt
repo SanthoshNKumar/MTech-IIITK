@@ -1,0 +1,376 @@
+# *************************************************************************Insertion and Display
+
+#include <stdio.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+
+void printLinkedList(struct Node* p){
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+}
+
+struct Node* head;
+
+int main()
+{
+    struct Node* one;
+    struct Node* two;
+    struct Node* three;
+    
+    one = (struct Node*)malloc(sizeof(struct Node*));
+    two = (struct Node*)malloc(sizeof(struct Node*));
+    three = (struct Node*)malloc(sizeof(struct Node*));
+    
+    one->data = 45;
+    two->data = 56;
+    three->data = 67;
+    
+    one->next = two;
+    two->next = three;
+    three->next = NULL;
+    
+    head = one;
+    
+    printLinkedList(head);
+    
+    return 0;
+}
+
+****************************************************************
+
+#include <stdio.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node* head;
+
+int main()
+{
+    struct Node* node1 = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* node2 = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* node3 = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* node4 = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* node5 = (struct Node*)malloc(sizeof(struct Node));
+    
+    node1->data = 100;
+    node2->data = 200;
+    node3->data = 300;
+    node4->data = 400;
+    node5->data = 500;
+    
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = node5;
+    node5->next = NULL;
+    
+    head= node1;
+    
+    while(head!=NULL){
+        printf("%d ",head->data);
+        head= head->next;
+    }
+
+    return 0;
+}
+
+********************************************************************
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+
+struct Node* newNode(struct Node* nextNode, int data)
+{
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    
+	temp->data = data;
+    temp->next = nextNode;
+    
+    return temp;
+} 
+
+int main()
+{
+    int values[] = {100, 200, 300, 400, 500};
+    
+    int n = sizeof(values)/sizeof(values[0]);
+    
+    struct Node* head;
+    
+    for (int i = n - 1; i >= 0; i--) {
+        head = newNode(head,values[i]);
+    }
+    struct Node* ptr = head;
+    
+    while (ptr)
+    {
+        printf("%d ", ptr->data);
+        ptr = ptr->next;
+    }
+
+    return 0;
+}
+
+***********************************************************************
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct node{
+    int data;
+    struct node* next;
+};
+
+struct node* head;
+
+int main()
+{
+   struct node* temp;
+   temp = (struct node*)malloc(sizeof(struct node));
+   
+   printf("Use Case 1:create and insert node data \n");
+   
+   printf("Ender node data\n");
+   scanf("%d",&temp->data);
+   
+   // Insert
+   if(head ==NULL){
+       head = temp;
+   }
+   
+   // display
+   struct node* ptr = head;
+   while(ptr!=NULL){
+       printf("%d \n",ptr->data);
+       ptr = ptr->next;
+   }
+   
+   
+   printf("Use Case 2:Insert at the beggining \n");
+   
+   // Insert at the beggining
+   struct node* temp1;
+   temp1 = (struct node*)malloc(sizeof(struct node));
+   
+   printf("Ender node data\n");
+   scanf("%d",&temp1->data);
+   
+   temp1->next = head;
+   head = temp1;
+   
+   
+   // display
+   struct node* ptr1 = head;
+   while(ptr1!=NULL){
+       printf("%d ",ptr1->data);
+       ptr1 = ptr1->next;
+   }
+   
+   printf("Use Case 3:Insert at the End \n");
+   
+   struct node* temp2;
+   temp2 = (struct node*)malloc(sizeof(struct node));
+   
+   printf("Enter node data\n");
+   scanf("%d",&temp2->data);
+   
+   temp2->next = NULL;
+  
+   
+   struct node* ptr2 = head;  
+   
+   while(ptr2->next!=NULL){
+       ptr2 = ptr2->next;
+   }
+   
+   ptr2->next = temp2;
+   
+   // display
+   struct node* ptr3 = head;
+   while(ptr3!=NULL){
+       printf("%d ",ptr3->data);
+       ptr3 = ptr3->next;
+   }
+   
+   printf("Use Case 3:insert node at given position \n");
+   
+   struct node* prev_ptr;
+   
+   struct node* temp3;
+   temp3 = (struct node*)malloc(sizeof(struct node));
+   
+   printf("Enter node data: ");
+   scanf("%d",&temp3->data);
+   
+   temp3->next = NULL;
+   
+   struct node* ptr4 = head;
+   printf("Enter position: ");
+   
+   int pos;
+   scanf("%d",&pos);
+   
+   for(int i=0;i<pos;i++){
+       prev_ptr = ptr4;
+       ptr4 = ptr4->next;
+   }
+   
+   temp3->next = ptr4;
+   prev_ptr->next = temp3;
+   
+   head = temp3;
+   
+    // display
+   struct node* ptr5 = head;
+   
+   while(ptr5!=NULL){
+       printf("%d ",ptr5->data);
+       ptr5 = ptr5->next;
+   }
+}
+
+
+*************************************************************************
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node* head;
+
+int main()
+{
+    struct Node* one;
+    struct Node* two;
+    struct Node* three;
+    
+    one = (struct Node*)malloc(sizeof(struct Node*));
+    two = (struct Node*)malloc(sizeof(struct Node*));
+    three = (struct Node*)malloc(sizeof(struct Node*));
+    
+    one->data = 45;
+    two->data = 56;
+    three->data = 67;
+    
+    one->next = two;
+    two->next = three;
+    three->next = NULL;
+    
+    head = one;
+    
+    struct Node *temp = head;
+    printf("\n\nList elements are - \n");
+    
+    //Traverse a Linked List
+    while(temp != NULL) {
+        printf("%d --->",temp->data);
+        temp = temp->next;
+    }
+    
+    // ************************
+    
+    
+    printf("\nUse case 1: Insert at the beggning \n");
+    struct Node *newNode1;
+    newNode1 = malloc(sizeof(struct Node));
+    newNode1->data = 4;
+    newNode1->next = head;
+    head = newNode1;
+
+    struct Node *temp1 = head;
+    
+    //Traverse a Linked List
+    while(temp1 != NULL) {
+        printf("%d --->",temp1->data);
+        temp1 = temp1->next;
+    }
+    
+    // ************************
+    
+    printf("\nUse case 1: Insert at the End \n");
+    struct Node *newNode2;
+    newNode2 = malloc(sizeof(struct Node));
+    newNode2->data = 8;
+    newNode2->next = NULL;
+    
+    struct Node *temp2 = head;
+    
+    while(temp2->next != NULL){
+        temp2 = temp2->next;
+    }
+    temp2->next = newNode2;
+    
+    // Display
+    struct Node *temp3 = head;
+    //Traverse a Linked List
+    while(temp3 != NULL) {
+        printf("%d --->",temp3->data);
+        temp3 = temp3->next;
+    }
+    
+    // ************************
+    
+    printf("\nUse case 1: Insert at the Middle \n");
+    
+    struct Node *newNode3;
+    newNode3 = malloc(sizeof(struct Node));
+    newNode3->data = 10;
+    
+    int position = 3;
+    
+    struct Node *temp4 = head;
+    for(int i=2; i < position; i++){
+        if(temp4->next != NULL) {
+            temp4 = temp4->next;
+        }
+    }
+    
+    newNode3->next = temp4->next;
+    temp4->next = newNode3;
+    
+    // Display
+    struct Node *temp5 = head;
+    //Traverse a Linked List
+    while(temp5 != NULL) {
+        printf("%d --->",temp5->data);
+        temp5 = temp5->next;
+    }
+}

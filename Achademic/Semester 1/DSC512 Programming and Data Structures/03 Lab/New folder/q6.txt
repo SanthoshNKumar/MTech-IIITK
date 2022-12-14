@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+int main(){
+    
+    int arr_length;
+    scanf("%d",&arr_length);
+    
+    int num[arr_length];
+    
+    for(int i=0;i<arr_length;i++){
+        scanf("%d",&num[i]);
+    }
+    
+    int pos;
+    scanf("%d",&pos);
+    
+    if(pos<1 || pos >arr_length){
+        printf("out of bound");
+    }else{
+         for(int i=pos-1;i< arr_length -1;i++){
+             num[i] = num[i+1];
+         }
+         
+         printf("\n");
+         
+         for(int i=0;i<arr_length;i++){
+             printf("%d ",num[i]);
+             
+         }
+    }
+}

@@ -1,0 +1,9 @@
+Binary Search Tree
+	- Variant of binary trees in which the nodes are arranged in an order.
+	- All the nodes in the left sub-tree have a value less than that of the root node.
+	- All the nodes in the right sub-tree have a value either equal to or greater than the root node.
+	- Same rule is applicable to every sub-tree in the tree
+	- May or may not contain duplicate values, depending on its implementation
+	- Time needed to search an element in the tree is greatly reduced
+	- Average running time of a search operation is O(log2n)	
+	- Speeds up the insertion and deletion operations

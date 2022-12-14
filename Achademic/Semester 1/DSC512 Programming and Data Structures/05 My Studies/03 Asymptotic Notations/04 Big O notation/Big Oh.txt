@@ -1,0 +1,30 @@
+The notation O(n) is formal way to express the upper bound (Worst case) of an algorithms running time.
+It measures the worst case time complexity or the longest amount of time an algorithm can possibly take to complete.
+
+Big O notation is the language we use for talking about how long an algorithm takes to run.
+
+Constant time = O(1)
+Linear = O(n)
+Logarithmuc = O(log n)
+Quadratic = O(n2)
+Cubic = O(n3)
+
+
+▪ A logarithmic algorithm – O(logn) 
+Runtime grows logarithmically in proportion to n. 
+
+▪ A linear algorithm – O(n) 
+Runtime grows directly in proportion to n. 
+
+▪ A superlinear algorithm – O(nlogn) 
+Runtime grows in proportion to n. 
+
+▪ A polynomial algorithm – O(nc) 
+Runtime grows quicker than previous all based on n. 
+
+▪ A exponential algorithm – O(cn) 
+Runtime grows even faster than polynomial algorithm based on n. 
+
+▪ A factorial algorithm – O(n!) 
+Runtime grows the fastest and becomes quickly unusable for even 
+small values of n

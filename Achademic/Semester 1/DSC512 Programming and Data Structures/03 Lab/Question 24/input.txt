@@ -1,0 +1,120 @@
+--- Input ---
+42 77 88 9 3 66 -999
+-89 -63
+
+--- Expected output (text)---
+Circular Queue: 9 3 66
+FRONT = 3, REAR = 5
+Contents of the remaining queue: 9 3 66
+9 3 66 -89 -63
+FRONT = 3, REAR = 1
+
+*****************************************************************
+
+--- Input ---
+23 5 1 100 -999
+77 88
+
+--- Expected output (text)---
+Circular Queue: 100
+FRONT=3, REAR=3
+Contents of the remaining queue: 100
+100 77 88
+FRONT=3, REAR=5
+
+
+*******************************************************************
+
+
+--- Input ---
+-999
+
+
+--- Expected output (text)---
+Empty Queue. Three eleme
+
+*******************************************************************
+
+--- Input ---
+68 -45 89 0 23 12 14 87 95 63 34 1 -10 -99 56 -999
+
+
+--- Expected output (text)---
+Out of bound
+
+
+*******************************************************************
+
+
+--- Input ---
+-10 -1 -88 -9 -3 -66 -999
+-89 -63
+
+--- Expected output (text)---
+Circular Queue: -9 -3 -66
+FRONT = 3, REAR = 5
+Contents of the remaining queue: -9 -3 -66
+-9 -3 -66 -89 -63
+FRONT = 3, REAR = 1
+
+*******************************************************************
+
+--- Input ---
+-99 56 -10 -7 95 100 -999
+-5 6
+
+--- Expected output (text)---
+Circular Queue: -7 95 100
+FRONT = 3, REAR = 5
+Contents of the remaining queue: -7 95 100
+-7 95 100 -5 6
+FRONT = 3, REAR = 1
+
+*******************************************************************
+
+--- Input ---
+4 5 -1 55 -999
+-123 2
+
+--- Expected output (text)---
+Circular Queue: 55
+FRONT = 3, REAR = 3
+Contents of the remaining queue: 55
+55 -123 2
+FRONT = 3, REAR = 5
+*******************************************************************
+
+--- Input ---
+35 45 -9 2 3 -999
+89 56
+
+
+--- Expected output (text)---
+Circular Queue: 2 3
+FRONT = 3, REAR = 4
+Contents of the remaining queue: 2 3
+2 3 89 56
+FRONT = 3, REAR = 0
+
+*******************************************************************
+
+--- Input ---
+56 -9 -999
+
+
+--- Expected output (text)---
+Three elements should be deleted
+
+*******************************************************************
+
+--- Input ---
+12 -999
+
+--- Expected output (text)---
+Three elements should be deleted
+
+*******************************************************************
+
+
+
+

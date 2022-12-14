@@ -1,0 +1,124 @@
+#include<stdio.h>  
+#include<stdlib.h>  
+struct node  
+{  
+    struct node *prev;  
+    struct node *next;  
+    int data;  
+};  
+
+struct node *head;  
+
+// creates a new node 
+struct node* create(int data)
+{
+    struct node* new_node = (struct node*) malloc (sizeof(struct node));
+ 
+    if (new_node == NULL)
+    {
+        printf("\nMemory can't be allocated\n");
+        return NULL;
+    }
+ 
+    new_node->data = data;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+ 
+    return new_node;
+}
+
+void display()  
+{  
+    struct node *ptr;  
+    ptr=head;  
+    if(head == NULL)  
+    {  
+    }     
+    else  
+    {  
+        while(ptr -> next != head)  
+        {  
+         
+            printf("%d ", ptr -> data);  
+            ptr = ptr -> next;  
+        }  
+        printf("%d ", ptr -> data);  
+    }  
+              
+}  
+
+// inserts a new node at the end 
+void append(int data)
+{
+    struct node* new_node = create(data);
+ 
+    if (new_node)
+    {
+        if (head == NULL)
+        {
+            new_node->next = new_node;
+            new_node->prev = new_node;
+            head = new_node;
+            return;
+        }
+        head->prev->next = new_node;
+        new_node->prev = head->prev;
+        new_node->next = head;
+        head->prev = new_node;
+    }
+}
+
+// calculate the size of the list
+int get_size()
+{
+    if (head == NULL) {
+        return 0;
+    }
+ 
+    struct node* temp = head;
+    int count = 0;
+ 
+    do {
+        count += 1;
+        temp = temp->next;
+    } while (temp != head);
+ 
+    return count;
+}
+
+// updates the data of the given node position
+void update(int position, int new_value)
+{
+    if (head == NULL) {
+        printf("\n  List is Empty \n");
+        return;
+    } else if (position <= 0 || position > get_size()) {
+        printf("\nInvalid position\n");
+        return;
+    } 
+ 
+    struct node* temp = head;
+    int i = 0;
+ 
+    while (++i < position) {
+        temp = temp->next;
+    }
+    temp->data = new_value;
+}
+
+
+int main()
+{
+    int val;
+    
+    scanf("%d",&val);
+    
+    while(val!= -999){
+        append(val);
+        scanf("%d",&val);
+    }
+
+    update(2,100);
+    
+    display();
+}

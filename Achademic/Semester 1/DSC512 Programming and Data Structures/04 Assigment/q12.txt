@@ -1,0 +1,100 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+   int data;
+   struct node *prev;
+   struct node *next;
+};
+
+struct node *head = NULL;
+struct node *last = NULL;
+
+struct node *current = NULL;
+
+void insert(int data) {
+
+   struct node *link = (struct node*) malloc(sizeof(struct node));
+
+   link->data = data;
+   link->prev = NULL;
+   link->next = NULL;
+
+   if(head==NULL) {
+      head = link;
+      return;
+   }
+
+   current = head;
+   
+   while(current->next!=NULL)
+      current = current->next;
+
+   current->next = link;
+   last = link;
+   link->prev = current;
+}
+
+struct node* insert_Beginning (struct node* head,int data)
+{
+    struct node *new_node;
+  
+    new_node = (struct node *) malloc (sizeof (struct node));
+    new_node->data = data;
+    new_node->next = head;
+    new_node->prev = NULL;
+    head->prev = new_node
+    head = new_node;
+    
+    return head;
+}
+
+void reverse(struct node** head_ref)
+{
+    struct node* temp = NULL;
+    struct node* current = *head_ref;
+ 
+    while (current != NULL) {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
+    }
+ 
+    if (temp != NULL)
+        *head_ref = temp->prev;
+}
+
+int main()
+{
+    int val,val1;
+    
+    scanf("%d",&val);
+    
+    while(val!= -999){
+        insert(val);
+        scanf("%d",&val);
+    }
+    
+    for(int i=0;i<3;i++){
+        
+        scanf("%d",&val1);
+        head = insert_Beginning(head,val1);
+        
+    }
+    
+    //insertFront(&head,-5);
+    
+    reverse(&head);
+    
+    struct node *ptr = head;
+    
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->next;
+    }
+
+    return 0;
+}
+insert

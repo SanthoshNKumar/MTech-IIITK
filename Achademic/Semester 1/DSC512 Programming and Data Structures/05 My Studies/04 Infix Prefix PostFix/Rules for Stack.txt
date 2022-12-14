@@ -1,0 +1,19 @@
+Rules :
+
+1. Priority of Operators
+	- ^   => Highest Priority
+	- *,/ => next Priority
+	- +,- => lowest Priority
+
+2. No two operators with same priority cannot stay together in the stack column.
+	
+	ex: Lets say /* , here / is placing on the stack now we placing * but thse two having the same priority.
+            in this case before placing the * lets pop / element. 
+
+3. Lowest Priority cannot be placed after highest Priority
+	ex : lets say * is alreday there in the stack , now  - is coming be placed on the stack, but * having the highest priority.
+	     so before placing -, lets first pop * and place - on the top of the stack.
+
+4. Any operator in between  paranthesis (*) just pop this element(*)
+	
+ 

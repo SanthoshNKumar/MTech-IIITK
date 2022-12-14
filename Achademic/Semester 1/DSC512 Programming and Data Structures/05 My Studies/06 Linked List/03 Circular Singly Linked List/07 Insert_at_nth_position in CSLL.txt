@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node *head=NULL;
+struct Node *tail=NULL;  
+
+
+
+void insert_node(int val)
+{
+    struct Node *temp=(struct Node*)malloc(sizeof(struct Node));
+    
+    temp->data=val;
+    
+    if(head==NULL){
+        head= temp;
+        tail = temp;
+        temp->next = head;
+    }
+    else{
+        tail->next = temp;
+        tail = temp;  
+        tail->next = head;  
+        }
+    }
+    
+void display(struct Node* _node){  
+    
+    struct Node *current = _node;
+    
+    if(_node == NULL){  
+    }  
+    else{  
+         do{  
+            printf("%d ", current->data);  
+            current = current->next;  
+        }while(current != _node);  
+        printf("\n");  
+    }  
+} 
+
+void insert_at_nth_position(struct Node *head,int data, int position)
+{
+    struct Node *newNode, *current;
+    int i;
+
+    if(head == NULL)
+    {
+        printf("List is empty.\n");
+    }
+    else
+    {
+        newNode = (struct Node *)malloc(sizeof(struct Node));
+        newNode->data = data;
+
+        current = head;
+        for(i=2; i<=position-1; i++)
+        {
+            current = current->next;
+        }
+
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+}
+
+
+
+int main()
+{
+    insert_node(55);
+    insert_node(88);
+    insert_node(99);
+    
+    insert_at_nth_position(head,33,2);
+
+    display(head);
+}

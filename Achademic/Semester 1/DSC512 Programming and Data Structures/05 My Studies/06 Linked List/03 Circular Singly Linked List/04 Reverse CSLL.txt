@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node *head=NULL;
+struct Node *tail=NULL;  
+
+void insert_node(int val)
+{
+    struct Node *temp=(struct Node*)malloc(sizeof(struct Node));
+    
+    temp->data=val;
+    
+    if(head==NULL){
+        head= temp;
+        tail = temp;
+        temp->next = head;
+    }
+    else{
+        tail->next = temp;
+        tail = temp;  
+        tail->next = head;  
+        }
+    }
+    
+void display(struct Node* _node){  
+    
+    struct Node *current = _node;  
+    
+    if(_node == NULL){  
+    }  
+    else{  
+         do{  
+            printf("%d ", current->data);  
+            current = current->next;  
+        }while(current != _node);  
+        printf("\n");  
+    }  
+}  
+
+void reverseList(struct Node **head) 
+{
+    struct Node *prev, *cur, *next, *last;
+
+    if (*head == NULL)
+    {
+        return;
+    }
+
+    last = *head;
+
+    prev  = *head;
+    cur   = (*head)->next;
+    *head = (*head)->next;
+
+    while (*head != last)
+    {
+        *head = (*head)->next;
+        cur->next = prev;
+
+        prev = cur;
+        cur  = *head;
+    }
+
+    cur->next = prev;
+    *head = prev; 
+}
+
+int main()
+{
+    insert_node(55);
+    insert_node(66);
+    insert_node(77);
+    insert_node(88);
+    
+    display(head);
+    
+    reverseList(&head);
+    
+    display(head);
+}

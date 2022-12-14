@@ -1,0 +1,118 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    struct node* prev;
+    struct node* next;
+    int data;
+};
+
+struct node *head;
+
+struct node* create(int data){
+    
+    struct node* new_node = (struct node*)malloc (sizeof(struct node));
+    
+    if(new_node == NULL){
+        return NULL;
+    }
+    
+    new_node->data = data;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+    
+    return new_node;
+    
+}
+void append(int data){
+    struct node* new_node = create(data);
+    
+    if(new_node){
+        if(head== NULL){
+            new_node->next = new_node;
+            new_node->prev = new_node;
+            head = new_node;
+            return;
+        }
+        
+        head->prev->next = new_node;
+        new_node->prev = head->prev;
+        new_node->next = head;
+        head->prev = new_node;
+        
+    }
+    
+}
+
+int get_size()
+{
+    if(head == NULL){
+        return 0;
+    }
+    
+    struct node* temp = head;
+    int count =0;
+    do{
+        count +=1;
+        temp = temp->next;
+    }while(temp != head);
+    
+    return count;
+}
+
+
+void delet_end(){
+    if(head == NULL){
+        return;
+    }else if(head->next == head) {
+        free(head);
+        head = NULL;
+        return;
+    }
+    
+    struct node* last_node = head->prev;
+    
+    last_node->prev->next = head;
+    head->prev = last_node->prev;
+    
+    free(last_node);
+    last_node = NULL;
+}
+
+void display(){
+    
+    struct node *ptr;
+    
+    ptr = head;
+    
+    while(ptr->next != head){
+        printf("%d ",ptr->data);
+        ptr = ptr->next;
+    }
+    
+    printf("%d ",ptr->data);
+}
+
+int main(){
+    
+    int val;
+    
+    scanf("%d",&val);
+    
+    while(val != -999){
+        append(val);
+        scanf("%d",&val);
+    }
+    
+    if(get_size() <1){
+        printf("Underflow !!! Empty Linked List.");
+        
+    }else if(get_size() == 1) {
+        printf("Empty Linked List.");
+        }else{
+        delet_end();
+        
+        display();
+    }
+}

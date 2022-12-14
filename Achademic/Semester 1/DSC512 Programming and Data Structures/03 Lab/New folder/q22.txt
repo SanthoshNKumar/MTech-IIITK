@@ -1,0 +1,102 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node{
+  char data;
+  struct node * next;
+}*sHead,*temp;
+
+void push(char c)
+{
+    temp = sHead;
+    struct node *newNode = (struct node*)malloc(sizeof(struct node));
+    newNode->data = c;
+    newNode->next = sHead;
+    sHead = newNode;
+}
+
+void pop()
+{
+    if(sHead == NULL)
+    {
+        printf("Nothing to pop");
+    }else{
+        temp = sHead;
+        if(sHead ->data == '+' || sHead ->data == '-' || sHead ->data == '*' || sHead ->data == '/')
+        {
+            printf("%c",sHead->data);
+        }
+        sHead = sHead->next;
+        free(temp);
+    }
+}
+
+void traveseStack(struct node *ptr){
+    temp = ptr;
+    if(temp == NULL){
+        printf("Empty Stack\n");
+    }else{
+        while(temp !=NULL){
+            printf("%c ",temp->data);
+            temp = temp ->next;
+        }
+    }
+}
+
+int priority(char c){
+    if(c == '+' || c == '*')
+    {
+        return 1;
+    }
+    if(c == '+' || c == '-')
+    {
+        return 2;
+    }
+}
+
+int main(){
+    sHead = NULL;
+    char in[100],exp[100];
+    int condition = 0, checkChar =0, checkPriority, i,j;
+    fgets(exp,100,stdin);
+    
+    if(strlen(exp) ==1){
+        condition ==1;
+        goto exit;
+    }
+    
+    i =0;
+    while(exp[i]){
+        if(exp[i] > 64 && exp[i] <91){
+            checkChar += 1;
+        }i++;
+    }if(checkChar == 0){
+        condition = 2;
+        goto exit;
+    }
+    
+    i = strlen(exp);
+    char arr[20];
+    for(i = strlen(exp); i>=0;i--){
+        if(exp[i] > 64 && exp[i] < 91){
+            push(exp[i]);
+        }
+        
+        condition = 10;
+    }
+    
+    exit:
+    
+    if(condition == 1){
+        printf("No Input detected");
+    }
+    if(condition == 2){
+        printf("Invalid Input");
+    }
+    if(condition == 10){
+        traveseStack(sHead); 
+    }
+    
+    return 0;
+}

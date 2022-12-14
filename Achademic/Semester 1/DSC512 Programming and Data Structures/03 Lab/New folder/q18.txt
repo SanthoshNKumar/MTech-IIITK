@@ -1,0 +1,126 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node{
+    int mark;
+    char name[30];
+    struct node *next;
+    struct node *m1;
+} *head, *tail,*temp;
+
+
+void traverseDLL(struct node *ptr){
+    temp = ptr;
+    while(temp!=NULL){
+        printf("%s ",temp->name);
+        printf("%d,",temp->mark);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    struct node *newNode;
+    char c[30];
+    int val,count = 0;
+    head = tail = NULL;
+    do{
+        
+        fgets(c,30,stdin);
+        
+        
+        c[strcspn(c,"\n")] = '\0';
+        
+        
+        val = strcmp(c,"-999");
+    
+        if(val !=0){
+            newNode = (struct node*)malloc(sizeof(struct node));
+            newNode ->next = NULL;
+            newNode->m1 = NULL;
+            strcpy(newNode-> name,c);
+            
+            
+            for(int i=0;i<strlen(c);i++){
+                char ch = c[i];
+                if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch == ' ')){
+                    continue;
+                }else{
+                    count = -3;
+                    goto exit;
+                }
+            }
+            
+            scanf("%d",&newNode->mark);
+            while((getchar()) != '\n');
+            
+            if(newNode ->mark <0){
+                printf("Marks cannot be negative");
+                count =-1;
+                break;
+            }else{
+                count +=1;
+                if(head = NULL){
+                    head = tail = newNode;
+                }else{
+                    tail ->next = newNode;
+                    tail ->m1 = newNode;
+                    tail = newNode;
+                }
+            }
+        } 
+    }while(val !=0);
+    
+    exit:
+    
+    if(count == -1){
+        printf(".");
+    }else if(count == -3){
+        printf("Input Error!!! Name of a student should only have alphabets.");
+    }
+    else if(count ==0){
+        printf("You must enter atleast one student.");
+    }
+    else if(count ==1){
+        printf("Descending order of Marks: %s %d\n",head->name,head->mark);
+        printf("Alphabetical Order: %s %d",head->name,head->mark);
+    }else{
+        int m;
+        char c[30];
+        struct node *i, *j;
+        
+        for(i =head; i!=NULL;i = i-> next){
+            for(j = i->next;j!=NULL;j= j->next){
+                if(i->mark <= j->mark){
+                    m = j->mark;
+                    j -> mark = i ->mark;
+                    i ->mark = m;
+                    strcpy(c,j ->name);
+                    strcpy(j->name,i->name);
+                    strcpy(i->name,c);
+                }
+            }
+        }
+        printf("Descending order of Marks: ");
+        traverseDLL(head);
+        
+       
+        for(i = head; i!= NULL;i = i->next){
+            for(j = i->next;j!=NULL;j= j->next){
+                val = strcmp(i->name,j->name);
+                if(val >=0){
+                    m = j->mark;
+                    j->mark = i->mark;
+                    i->mark = m;
+                    strcpy(c, j->name);
+                    strcpy(j->name,i->name);
+                    strcpy(i->name,c);
+                }
+            }
+        }
+        printf("\nAlphabetical Order:");
+        traverseDLL(head);
+    }
+    return 0;
+}

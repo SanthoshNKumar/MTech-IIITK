@@ -1,0 +1,140 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include<string.h>
+
+struct node{
+    char data;
+    struct node *next;
+}*sHead,*temp;
+
+
+void push(char c){
+   temp = sHead;
+   struct node *newNode = (struct node *)malloc(sizeof(struct node));
+   newNode->data = c;;
+   newNode ->next = sHead;
+   sHead = newNode;
+}
+
+void pop(){
+    if(sHead == NULL){
+        
+    }else{
+        temp = sHead;
+        if(sHead ->data == '+' || sHead ->data == '-' || sHead ->data == '*' || sHead ->data == '/'){
+            printf("%c",sHead->data);
+        }
+        
+        sHead = sHead ->next;
+        free(temp);
+    }
+}
+
+
+void traverse(struct node *sHead){
+    printf("inside traver\n");
+    temp = sHead;
+    if(temp ==NULL){
+        printf("Stack Empty\n");
+    }else{
+        while(temp != NULL){
+        printf("%c ",temp -> data);
+        temp = temp -> next;
+        }
+    }
+}
+
+int priority(char c)
+{
+   if(c == '(' || c == '{' || c =='['){
+       return 0;
+   }
+   
+   if(c == '/' || c == '*' || c =='%'){
+       return 1;
+   }
+   
+   if(c == '+' || c == '-'){
+       return 2;
+   }
+}
+
+
+int main()
+{
+    sHead = NULL;
+    char exp[100];
+    int condition =0,checkchar =0,charPriority;
+    fgets(exp,100,stdin);
+    
+    if(strlen(exp) ==1){
+        condition =1;
+        goto exit;
+    }
+    
+    int i =0;
+    while(exp[i]){
+        if((exp[i] >96 && exp[i]< 123) || (exp[i] > 64 && exp[i] <91))
+        {
+            checkchar += 1;
+        }
+        i++;
+    }
+    
+    if(checkchar ==0){
+        condition =2;
+        goto exit;
+    }
+    
+    i =0;
+    
+    while(exp[i]){
+        if((exp[i] >96 && exp[i]< 123) || (exp[i] > 64 && exp[i] <91))
+        {
+            printf("%c ",exp[i]);
+        }
+        
+        else if(exp[i] == '(' || exp[i] == '{' || exp[i] == '['){
+            push(exp[i]);
+            
+        }
+        
+        else if(exp[i] == '*' || exp[i] == '+' || exp[i] == '-' || exp[i] == '/')
+        {
+            charPriority = priority(exp[i]); 
+            
+            push(exp[i]);
+        }
+        else if(exp[i] == ')' || exp[i] == '}' || exp[i] == ']'){
+            if(sHead -> data != exp[i]){
+                pop();
+                
+                if(sHead == NULL)
+                {
+                    goto ww;
+                }
+            }
+            
+        }
+        
+        ww:
+        i++;
+    }
+    
+    exit:
+    
+    if(condition == 1){
+        printf("No Input detected");
+    }
+    if(condition == 2){
+        printf("Invalid Input.");
+    }
+    
+    if(sHead != NULL){
+        printf("%c",sHead -> data);
+        sHead = sHead->next;
+    }
+    
+    return 0;
+}

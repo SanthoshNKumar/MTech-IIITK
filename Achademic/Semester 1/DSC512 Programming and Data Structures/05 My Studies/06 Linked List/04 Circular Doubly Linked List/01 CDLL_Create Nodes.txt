@@ -1,0 +1,84 @@
+#include<stdio.h>  
+#include<stdlib.h>  
+struct node  
+{  
+    struct node *prev;  
+    struct node *next;  
+    int data;  
+};  
+
+struct node *head;  
+
+// creates a new node 
+struct node* create(int data)
+{
+    struct node* new_node = (struct node*) malloc (sizeof(struct node));
+ 
+    if (new_node == NULL)
+    {
+        printf("\nMemory can't be allocated\n");
+        return NULL;
+    }
+ 
+    new_node->data = data;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+ 
+    return new_node;
+}
+
+
+// inserts a new node at the end 
+void append(int data)
+{
+    struct node* new_node = create(data);
+ 
+    if (new_node)
+    {
+        if (head == NULL)
+        {
+            new_node->next = new_node;
+            new_node->prev = new_node;
+            head = new_node;
+            return;
+        }
+        head->prev->next = new_node;
+        new_node->prev = head->prev;
+        new_node->next = head;
+        head->prev = new_node;
+    }
+}
+
+void display()  
+{  
+    struct node *ptr;  
+    ptr=head;  
+    if(head == NULL)  
+    {  
+    }     
+    else  
+    {  
+        while(ptr -> next != head)  
+        {  
+         
+            printf("%d ", ptr -> data);  
+            ptr = ptr -> next;  
+        }  
+        printf("%d ", ptr -> data);  
+    }  
+              
+} 
+
+int main()
+{
+    int val;
+    
+    scanf("%d",&val);
+    
+    while(val!= -999){
+        append(val);
+        scanf("%d",&val);
+    }
+    
+    display();
+}

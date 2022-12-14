@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <string.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+int count_nodes(struct Node *head){
+    int count =0;
+    
+    if(head ==NULL){
+        printf("nexted list is Empty");
+    }
+    
+    struct Node *ptr = head;
+    
+    while(ptr!=NULL){
+        count++;
+        ptr= ptr->next;
+    }
+    return count;
+}
+
+struct Node* get_UserInput_length(){
+    
+    struct Node* newNode=NULL;
+    
+    char string[50];
+    
+    scanf("%[^\n]s",string);
+
+    char * token = strtok(string, " ");
+    
+    while( token != NULL ) {
+        
+        const char* s = token;
+        int x;
+        sscanf(s, "%d", &x);
+        
+        // ********************************************
+        struct Node *ptr=newNode;
+        struct Node *temp=(struct Node*)malloc(sizeof(struct Node));
+    
+        temp->data=x;
+        temp->next=NULL;
+    
+        if(newNode==NULL){
+            newNode=temp;
+            
+        }
+        
+        else{
+            while(ptr->next){
+                ptr=ptr->next;
+        }
+        ptr->next=temp;
+            
+        }
+        
+        //********************************************
+    
+        token = strtok(NULL, " ");
+   }
+   
+  
+   return newNode;
+}
+
+int main() {
+   
+   struct Node* _node = get_UserInput_length();
+
+   int i = count_nodes(_node);
+   
+   printf("%d",i);
+   
+   return 0;
+}

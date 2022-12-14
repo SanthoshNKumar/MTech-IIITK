@@ -1,0 +1,37 @@
+# Node Creation for single linked list
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+
+# Node Creation for doubly linked list 
+
+struct node   
+{  
+    struct node *prev;   
+    int data;  
+    struct node *next;   
+}
+
+
+**************************************************
+
+# Display values in linked list
+
+void printLinkedList(struct Node* p){
+    while(p!=NULL){
+        printf("%d",p->data);
+        p = p->next;
+    } 
+}
+
+
+**************************************************
+
+
+
+
+
+*******************************************************

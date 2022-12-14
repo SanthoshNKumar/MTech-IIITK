@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<ctype.h>
+
+int isCharExist(char buf[],char c){
+     char *s;
+     
+     s = strchr(buf,c);
+     
+     if(s!= NULL)
+        return 1;
+     else
+        return 0;
+}
+
+
+
+char *toLower(char *str,size_t len)
+{
+    char *str_l = calloc(len+1,sizeof(char));
+    
+    for(size_t i =0;i<len;++i){
+        str_l[i] = tolower((unsigned char) str[i]);    
+    }
+    return str_l;
+}
+
+int main(){
+    
+    char alphabets[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    
+    char buf [60] ;
+    
+    // scanf("%s",buf);
+    fgets(buf,sizeof(buf),stdin);
+    
+    size_t len = strlen(buf);
+    char *lower = toLower(buf,len);
+    
+    int length = strlen(buf);
+    
+    int is_Pangram = 1;
+    
+    for(int i=0;i<26;i++){
+        char x = alphabets[i];
+        
+        int is_found = isCharExist(lower,x);
+        
+        if(is_found == 0){
+            is_Pangram =0;
+        }
+    }
+    
+    if(is_Pangram ==1){
+        printf("Pangram");
+    }else{
+        printf("Not Pangram");
+        printf("\n");
+        
+        for(int j=0;j<26;j++){
+            
+            char x1 = alphabets[j]; 
+            
+            int is_found = isCharExist(lower,x1);
+            
+            if(is_found ==0){
+                printf("%c",x1);printf("%c",' ');
+            }
+        }
+    }
+    
+    printf("\n");
+    return 0;
+   
+}

@@ -1,0 +1,56 @@
+What is Time Complexity?
+Algorithm speed is not measured in seconds but in terms of growth.
+
+The time complexity, computational complexity or temporal complexity describes the amount of time necessary to execute an algorithm.
+It is not a measure of the actual time taken to run an algorithm, instead, it is a measure of how the time taken scales with change in the input length.
+
+Instead of measuring actual time required in executing each statement in the code, Time Complexity considers how many times each statement executes. 
+
+Big o Notation
+	- The Big-O Notation tells us how an algorithm scales against changes in the input dataset size.
+	- O stands for Order Of — as such the Big-O Notation is approximate
+	- Algorithm running times grow at different rates:
+		O(1) < O(logN) < O(N) < O(N logN) < O(N²) < O(2ᴺ) < O(N!)
+
+Difference Between Big O and Big Omega and Big theta
+	Big O notation is used for the worst case analysis of an algorithm. 
+	Big Omega is used for the best case analysis of an algorithm. 
+	Big Theta is used for the analysis of an algorithm when the the best case and worst case analysis is the same
+
+Different types of complexities?
+
+O(1) — Constant
+	O(1) means that the algorithm takes the same number of steps to execute regardless of how much data is passed in.
+
+	 Ex: Determine if the i-th element of an array is an odd number.	
+
+O(N) — Linear
+	An algorithm that is O(N) will take as many steps as there are elements of data.
+	So when an array increases in size by one element, an O(N) algorithm will increase by one step.
+
+	Ex : Traverse an array and print each element.
+
+O(N²) — Quadratic
+	O(N²) represents the complexity of an algorithm, whose performance is proportional to the square of the size of the input elements. 
+	It is generally quite slow: If the input array has 1 element it will do 1 operation, if it has 10 elements it will do 100 operations, and so on.
+
+	Ex: Find duplicates in an array.
+
+O(logN) — Logarithmic
+	Simply put, O(logN) describes an algorithm that its number of operations increases by one each time the data is doubled.
+
+
+	Ex: Logarithmic time complexities usually apply to algorithms that divide problems in half every time.
+
+O(N logN) — Log-linear
+	An algorithm of this complexity class is doing log(N) work N times and therefore its performance is slightly worse than O(N).
+	
+	Ex: Merge Sort — it is a ‘Divide and Conquer’ algorithm: it divides the input array in two halves, calls itself for each one and then merges the two sorted halves.
+
+O(2ᴺ) — Exponential
+	Exponential growth means that the algorithm takes twice as long for every new element added.
+
+O(N!) — Factorial
+	- This class of algorithms has a run time proportional to the factorial of the input size: n! = n * (n-1) * (n-2) * (n-3) * . . . * 1.
+
+	

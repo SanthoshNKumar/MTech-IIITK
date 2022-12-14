@@ -1,0 +1,68 @@
+Infix to Postfix Conversion
+Infix to Prefix Conversion
+Postfix to infix Conversion
+
+Binary Tree Traversals
+	- Inorder
+	- Pre Order
+	- Post Order
+	- Level Order 
+	- Construct Binary Tree from results
+
+Binary Search tree
+	- Building Binary Search tree
+	- Searching for a Node in Binary Search tree
+	- Inserting a node into Binary Search tree
+	- Deleting a node from Binary Search tree
+	- Mirror Image of a Bnary Search tree
+	- Smallest element in a Binary Search tree
+	- Largest element in a Binary Search tree
+	- Deleting the Binary Search tree
+
+Huffman Encoding
+	- 
+
+Recursive Functions
+	- Linear Recursion
+	- Tree Recursion
+
+Binary Heap
+	- Min Heap
+	- Max heap
+	- Insertng a new element in a binary heap
+	- Deleting an Element from Binary Heap
+	- Heap Sort
+	- Heap Sort Complexity
+	- Searching in Binary heap
+
+AVL Trees
+	- Building Balanced factor AVL Trees
+	- Searching in AVL Trees
+	- Inserting new node into AVL Trees
+	- Inserting into AVL Trees : LL Case
+	- Inserting into AVL Trees : RR Case
+	- Inserting into AVL Trees : RL Case
+	- Inserting into AVL Trees : LR Case
+
+Hashing 
+	- Applications of Hashing	
+	- Direct Address Table
+	- Hash functions
+	- Hash functions and Collisons
+	- Collision Resolution
+		- Chaning(Open Hasing)
+		- Open Addressing (Closed Addressing)
+			- Linear Probing
+			- Quadratic Probing
+			- Double Hashing
+	- Birthday Paradox
+	- Chaining Vs Open Addressing
+
+Graph
+	- 
+
+
+
+
+
+

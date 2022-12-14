@@ -1,0 +1,73 @@
+A queue in C is basically a linear data structure to store and manipulate the data elements. It follows the order of First In First Out (FIFO).
+
+In queues, the first element entered into the array is the first element to be removed from the array.
+
+For example, let’s consider the scenario of a bus-ticket booking stall.
+
+
+Applications of Queue Data Structure
+	- CPU Scheduling
+	- Disk Schedulin
+	- Asynchronous data transfer between processors such as File IO, etc.
+	- Breadth-First Search Algorithm (BFS)
+
+Enqueue :
+	- Putting items in the queue is called enqueue.
+
+Dequeue :
+	Removing items from the queue is called dequeue.
+
+Basic Operations of Queue
+	- Enqueue: Add an element to the end of the queue
+	- Dequeue: Remove an element from the front of the queue
+	- IsEmpty: Check if the queue is empty
+	- IsFull: Check if the queue is full
+	- Peek: Get the value of the front of the queue without removing it
+
+Working of Queue
+	- two pointers FRONT and REAR
+	- FRONT track the first element of the queue
+	- REAR track the last element of the queue
+	- Initially, set value of FRONT and REAR to -1
+
+Enqueue Operation
+	- check if the queue is full
+	- for the first element, set the value of FRONT to 0
+	- increase the REAR index by 1
+	- add the new element in the position pointed to by REAR
+
+Dequeue Operation
+	- check if the queue is empty
+	- return the value pointed by FRONT
+	- increase the FRONT index by 1
+	- for the last element, reset the values of FRONT and REAR to -1
+
+Types of Queues
+	- Simple Queue
+	- Circular Queue
+	- Priority Queue
+	- Double Ended Queue
+
+Simple Queue
+	- In a simple queue, insertion takes place at the rear and removal occurs at the front. It strictly follows the FIFO (First in First out) rule.
+
+Circular Queue
+	- In a circular queue, the last element points to the first element making a circular link.
+
+Priority Queue
+	- Here each element is associated with a priority and is served according to its priority. 
+	  If elements with the same priority occur, they are served according to their order in the queue.
+
+Deque (Double Ended Queue)
+	- In a double ended queue, insertion and removal of elements can be performed from either from the front or rear. 
+          Thus, it does not follow the FIFO (First In First Out) rule.
+
+
+List some Queue real-life applications  
+	- Serving requests on a single shared resource, like a printer, CPU task scheduling etc.
+	- In real life scenario, Call Center phone systems uses Queues to hold people calling them in an order, until a service representative is free.
+	- Handling of interrupts in real-time systems. The interrupts are handled in the same order as they arrive i.e First come first served.
+
+
+
+

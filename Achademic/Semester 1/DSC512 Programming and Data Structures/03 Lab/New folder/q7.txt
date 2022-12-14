@@ -1,0 +1,47 @@
+#include<stdio.h>
+
+int main(){
+    int arr_length;
+    scanf("%d",&arr_length);
+    
+    int num[arr_length];
+    
+    for(int i=0;i<arr_length;i++){
+        scanf("%d",&num[i]);
+    }
+    
+    int a;
+    
+    // Ascending Order
+    for(int i=0;i< arr_length;++i){
+        for(int j=i+1;j<arr_length;++j){
+            if(num[i] >num[j]){
+                a = num[i];
+                num[i] = num[j];
+                num[j] = a;
+            }
+        }
+    }
+    
+    for(int i=0;i<arr_length;i++){
+        printf("%d ",num[i]);
+    }
+    
+    printf("\n");
+    
+    // Descending Order
+     for(int i=0;i< arr_length;++i){
+        for(int j=i+1;j<arr_length;++j){
+            if(num[i] < num[j]){
+                a = num[i];
+                num[i] = num[j];
+                num[j] = a;
+            }
+        }
+    }
+    
+    for(int i=0;i<arr_length;i++){
+        printf("%d ",num[i]);
+    }
+    
+}

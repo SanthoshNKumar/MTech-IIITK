@@ -1,0 +1,229 @@
+**** Data Structures and Algorithms
+
+Introduction to Data Structure
+  - Data Structures
+     - Primitive DS
+     - Non Primitive DS
+Primitive DS
+    - Integer
+    - Float
+    - Character
+    - Pointer			
+
+Non Primitive DS
+
+    - Linear List
+      - Array 
+      - Link List
+      - Stack
+      - Queue
+
+    - Non Linear List 
+      - Graph
+      - Trees
+
+ - Algorithm
+
+Dynamic Memory Allocation
+   - malloc()
+   - calloc()
+   - free()
+   - realloc()
+
+- Structure pointer
+
+Array
+   - Array Operation
+	- Traversing
+	- Inserting
+	- Searching
+	- Deleting
+	- Merging
+	- Sorting
+
+Linked List
+   - Traversing
+   - Insertion
+   - Insertion at Beginning
+   - Insertion at End
+   - Insertion After a given node
+   - Deletion first node
+   - Deletion of last node
+   - Deletion of node after specific node
+
+Doubly Linked List
+   - New node inserted at the beginning
+   - New node inserted at the end
+   - New node inserted after a given node
+   - New node inserted before a given node
+   - First node is deleted
+   - Last node is deleted
+   - Node after a given node is deleted
+   - Node before a given node is deleted
+
+Circular Linked Lists
+   - Insertion Operations
+   - Insertion at the beginning
+   - Insertion at the end
+   - Deletion Operations
+   - Deletion at the beginning
+   - Deletion at the end
+
+Multi-Linked Lists
+
+Algorithms and Order of Growth
+   - Constant : Θ(1)
+   - Logarithmic : Θ(log n)
+   - Sub Linear : Θ(<n)
+   - Linear : Θ(n)
+   - Log-Linear :Θ(n log n)
+   - Quadratic :Θ(n^2)
+   - Polynomial :Θ(n^3)
+   - Exponential : Θ(2^n)
+   - Worse (Factorial) : Θ(n!)
+
+Best worst and Average case Complexities
+   - Asymptotic Notation is used to describe the running time of an algorithm
+     How much time an algorithm takes with a given input n.
+   - Asymptotic Notation
+	- Big Oh notation (O) : exact bound or exact upper bound (0 ≤ f(n) ≤ cg(n))		
+	- Theta notation (Θ) : exact bound (0 ≤ c1g(n) ≤ f(n) ≤ c2g(n))
+	- Omega notation (Ω) : exact bound or lower bound (0 ≤ cg(n) ≤ f(n))
+
+Finding Upper, lower and Tight (Exact) bound of any function
+
+Analyzing Code Snippets
+	- Determining Complexities
+
+Stacks
+   - LIFO (Last-In-First-Out)
+   - Array Implementation of Stack
+   - Stacks: Push Operation
+   - Stacks: Pop Operation
+   - Stacks: Peek Operation
+   - Linked List Implementation of Stack
+   - Linked List Implementation of Stack: Push
+   - Linked List Implementation of Stack: Pop
+   - Reversing a List using Stacks
+   - Parentheses Checker using Stacks
+
+Queue
+   - Insertion
+   - Deletion
+   - Array Implementation of Queues
+   - Types of Queues
+	- Multiple Queue;Circluar Queue; Deque; Priority Queue
+   - Circular Queue
+	- Insertion; Operations; Deletion
+
+Infix, Postfix, and Prefix Notations
+   - Infix Notation: Operator is placed in between the operands
+	Ex: A + B
+   - Postfix Notation: Operator is placed after the operands.
+	Ex: AB+
+   - Prefix Notation: The operator is placed before the operands.
+        Ex: +AB
+
+Operator Precedence for Infix Conversion
+    - 1./
+    - 2.^*
+    - 3.+-
+
+Infix Conversions
+   - Infix to Postfix Conversion
+   - Infix to Prefix Conversion
+
+Analyzing Complexity for Recursive Functions
+   - Recursion Tree
+   	- Find Level
+	- Find Cost at each level
+	- Find Number of levels
+	- Find Cost of the last level
+	- Find Total Complexity 
+
+Steps to solve recurrence relation using recursion tree method
+   1. Draw a recursive tree for given recurrence relation
+   2. Calculate the cost at each level and count the total no of levels in the recursion tree.
+   3. Count the total number of nodes in the last level and calculate the cost of the last level
+   4. Sum up the cost of all the levels in the recursive tree 	
+
+
+Space Complexity and Auxiliary Space
+
+Auxiliary Complexity
+  
+Binary Tree and Traversal
+  - Understanding Tree
+	(Root;Sibling;Internal Node;External Node;Leaf node;;Ancestor node;Sub-trees;Edge;Path;Depth;Height;Level)
+  - Types of binary tree
+	- Full Binary Tree
+	- Perfect Binary Tree
+	- Complete Binary Tree
+	- Skewed Binary Tree
+	- Balanced Binary Tree
+  - Expression Tree : Binary Tree can be used to store algebraic expression
+  - Creating Binary Tree from General Tree
+  - Binary Tree Traversal
+	- In Order Traversal
+	- Preorder Traversal
+	- Postorder Traversal
+	- Constructing Binary Tree from Traversal Results
+		- Using Inorder and Postorder result
+		- Using Inorder and Preorder result
+
+
+Binary Search Tree
+   - Rule for Building Binary Search Tree
+   - Building a Binary Search Tree
+   - Searching for a Node in Binary Search Tree
+   - Inserting a Node into Binary Search Tree
+   - Deleting a Node from Binary Search Tree 
+   - Mirror Image of a Binary Search Tree
+   - Smallest element in a Binary Search Tree
+   - Largest element in a Binary Search Tree
+   - Deleting the Binary Search Tree
+
+Huffman’s Tree
+   - Why Huffman’s Tree?
+   - Build Huffman’s Tree
+
+
+Randomized Algorithms
+  - Deterministic Algorithm (for a particular input always the same output)
+  - Non-Deterministic Algorithm (for a particular input will give different outputs on different execution)
+  - Randomized Algorithms
+	- Las Vegas Algorithms; Monte Carlo Algorithms
+
+Binary Heap (Complete Binary Tree)
+  - Building Max Heap
+  - Building Min Heap
+  - Inserting a New Element in a Binary Heap
+  - Deleting an Element from a Binary Heap
+  - Heap Sort
+  - Searching in Binary Heap
+
+AVL Trees (Self Balancing Binary Search Tree)
+  - Building Balancing factor using AVL tree
+  - Searching in AVL Tree
+  - Inserting new node in AVL tree
+  - Inserting into AVL tree: LL Rotation Case
+  - Inserting into AVL tree: RR Rotation Case
+  - Inserting into AVL tree: LR Rotation Case
+  - Inserting into AVL tree: RL Rotation Case
+  - Deletion from AVL Tree
+  - Deletion from AVL Tree: R0 Rotation
+  - Deletion from AVL Tree: R1 Rotation
+
+Hashing
+  - Hash Functions
+  - Collision Resolution
+       - Chaining
+       - Open Addressing
+           - Linear Probing
+           - Quadratic Probing
+           - Double Probing
+
+Graphs and Dijkstra’s Shortest Path Algorithm	
+  - Graph Representations
+	- Adjacency Matrix
+        - Adjacency List

@@ -1,0 +1,42 @@
+A + B : here (A and B are Operands) and (+ is Operator)
+
+prefix : Operator First
+postfix : Operator Last
+
+Prefix :
+	exp : +ab, *+AB+CD
+Postfix :
+	exp : ab+,a Ab+CD+*
+
+Infix notation is the notation in which operators come between the required operands. 
+Postfix notation is the type of notation in which operator comes after the operand.
+
+Infix: Expressions of format (A + B) are called as infix expressions, these are just like mathematical expressions
+
+Infix expressions are those expressions which have operators between the operands.
+Example: A+B
+
+Prefix: An expression is called the prefix expression if the operator appears in the expression before the operands..
+
+Prefix: Expressions wherein the operator comes before the operands are prefix expression like – Infix: (A + B) can be expressed as +AB
+Prefix expression is those expressions which have operators before the operands.
+Example: +AB.
+
+Postfix: Expression operator comes after the operands are prefix expression like – Infix: (A + B) can be expressed as AB+
+
+In infix form, an operator is written in between two operands. For example: An expression in the form of A * ( B + C ) / D is in infix form.
+This expression can be simply decoded as: “Add B and C, then multiply the result by A, and then divide it by D for the final answer.”
+
+Infix expression: The expression of the form a operator b (a + b). When an operator is in-between every pair of operands.
+Postfix expression: The expression of the form a b operator (ab+). When an operator is followed by every pair of operands.
+
+Convert Infix to Postfix
+	
+Convert Infix to Prefix
+	1. Reverse the Infix String
+	2. Obtain the postfix expression of above the reversed Infix String
+	3. Reverse the postfix expression obtained in step 2
+
+
+
+

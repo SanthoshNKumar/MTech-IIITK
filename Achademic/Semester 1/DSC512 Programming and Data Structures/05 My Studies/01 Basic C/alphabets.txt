@@ -1,0 +1,117 @@
+#include <stdio.h>
+int main() {
+    
+    char c;
+    int i = 0;
+    for (c = 'A'; c <= 'Z'; ++c)
+    printf("%c ", c);
+}
+
+
+**********************************
+
+#include <stdio.h>
+int main() {
+    int i;
+    
+    int arr[5] = {20,21,22,23,24};
+    char alphabets[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    
+    for(i=0;i<26;i++){
+        printf("%c ", alphabets[i]);
+    }
+}
+
+***********************************
+
+#include <string.h>
+
+char buf [] = "The five boxing wizards jump quickly";
+
+int length = strlen(buf);
+
+printf("Name length: %u", length);
+
+
+***********************************
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char *s;
+    
+    char buf [] = "This is a test";
+    
+    s = strchr(buf, 't');
+    
+    if (s != NULL)
+        printf ("found a 't' at %s\n", s);
+}
+
+**************************************
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+char *toLower(char *str, size_t len)
+{
+    char *str_l = calloc(len+1, sizeof(char));
+
+    for (size_t i = 0; i < len; ++i) {
+        str_l[i] = tolower((unsigned char)str[i]);
+    }
+    return str_l;
+}
+
+int main() {
+    
+    // char alphabets[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    // char buf [] = "The five boxing wizards jump quickly";
+    
+    // lower the 'sentence'
+    
+    
+    // get the unique char from the 'sentence'
+    char *str = "THIS STRING LITERAL IS ARBITRARY";
+
+    printf("%s\n", str);
+    size_t len = strlen(str);
+
+    char *lower = toLower(str, len);
+    printf("%s", lower);
+    free(lower);
+
+    exit(EXIT_SUCCESS);
+    
+}
+
+********************************************************
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int isCharExist(char buf [],char c){
+    
+    char *s;
+    
+    s = strchr(buf, c);
+    
+    if (s != NULL)
+        return 1;
+    else
+        return 0;
+    
+}
+
+int main() {
+    
+    char buf [] = "This is a test";
+    
+    rec(buf,'t');
+    printf("%d",rec(buf,'m'));
+}
+
+********************************************************

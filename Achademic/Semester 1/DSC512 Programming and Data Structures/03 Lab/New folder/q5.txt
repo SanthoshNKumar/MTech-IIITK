@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+int main(){
+    
+    int ar_length;
+    scanf("%d",&ar_length);
+    
+    int input[ar_length];
+    
+    for(int i=0;i<ar_length;i++){
+        scanf("%d",&input[i]);
+    }
+    
+    int val;
+    scanf("%d",&val);
+    
+    int isfound =0;
+    
+    for(int i=0;i<ar_length;i++){
+        if(input[i] == val){
+            printf("Element Found at position %d",(i+1));
+            isfound = 1;
+            break;
+        }
+    }
+    
+    if(isfound ==0){
+        printf("Element not Found");
+    }
+    
+}

@@ -1,0 +1,40 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int is_prime(n){
+    for(int j =2;j<n;j++){
+        if(n%j == 0)
+            return 0;
+    }
+    return 1;
+}
+
+
+
+int main()
+{
+    int arr[100] = {0};
+    
+    int lower;
+    scanf("%d",&lower);
+
+    int upper
+    scanf("%d",&upper);
+    int counter = 0;
+
+    for(int i =lower;i<upper;i++){
+        if(is_prime(i) ==1)
+            printf("%d",i);printf("%c",' ');
+            arr[counter] = i;
+            counter++;
+    }
+i
+    return 0;
+}

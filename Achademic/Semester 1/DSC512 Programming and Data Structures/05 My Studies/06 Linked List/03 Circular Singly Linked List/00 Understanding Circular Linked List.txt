@@ -1,0 +1,2 @@
+A circular linked list is similar to the singly linked list except that the last node points to the first node.
+

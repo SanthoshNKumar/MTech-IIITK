@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* link;
+};
+
+int main()
+{
+    struct Node *head = (struct Node*)malloc(sizeof(struct Node*));
+    head->data = 45;
+    head->link = NULL;
+    
+    printf("%d",head->data);
+    
+}
+
+**************************************************************************
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* link;
+};
+
+int main()
+{
+    struct Node *head = (struct Node*)malloc(sizeof(struct Node*));
+    head->data = 45;
+    head->link = NULL;
+    
+    struct Node *node1 = (struct Node*)malloc(sizeof(struct node*));
+    node1->data = 56;
+    node1->link = NULL;
+    
+    struct Node *node2 = (struct Node*)malloc(sizeof(struct node*));
+    node2->data = 67;
+    node2->link = NULL;
+    
+    struct Node *node3 = (struct Node*)malloc(sizeof(struct node*));
+    node3->data = 75;
+    node3->link = NULL;
+    
+    // Connect nodes
+    head->link  = node1;
+    node1->link = node2;
+    node2->link = node3;
+    
+    // Traverse and Print Nodes
+    struct Node *ptr = head;
+    while(ptr !=NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->link;
+    }
+    
+    return 0;
+}
+
+**************************************************************************
+

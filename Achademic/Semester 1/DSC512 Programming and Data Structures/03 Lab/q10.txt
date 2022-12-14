@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+  int data;
+  struct Node* link;
+};
+
+struct Node* head = NULL;
+
+void insert_node(int val){
+    
+    struct Node *ptr=head;
+    struct Node *temp=(struct Node*)malloc(sizeof(struct Node));
+    
+    temp->data=val;
+    temp->link=NULL;
+    
+    if(head==NULL){
+        head=temp;
+    }
+    else{
+        while(ptr->link){
+            ptr=ptr->link;
+        }
+        ptr->link=temp;
+        
+    }
+}
+
+void display(struct Node* head){
+    struct Node* ptr = head;
+    
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->link;
+    }
+}
+
+int getindex(struct Node* head,int x){
+    struct Node *current = head;
+    
+    int count =0;
+    
+    while(current !=NULL){
+        if(current->data == x){
+            return count;
+        }
+        current= current->link;
+        count++;
+    }
+    
+    return -1;
+}
+
+struct Node* delete_node_middle(struct Node *head,int position){
+    struct Node *temp = head;
+    
+    for(int i=1; i< position; i++) {
+        if(temp->link!=NULL) {
+            temp = temp->link;
+        }
+    }
+    
+    temp->link = temp->link->link;
+    
+    return head;
+}
+
+
+int main()
+{
+    int val,val1;
+    
+    scanf("%d",&val);
+    
+    while(val!=-999){
+        
+        insert_node(val);
+        scanf("%d",&val);
+    }
+    
+    scanf("%d",&val);
+    
+    int pos = getindex(head,val);
+    
+    struct Node *ptr = delete_node_middle(head,pos-1);
+    
+    display(ptr);
+   
+    return 0;
+}
+
+
+

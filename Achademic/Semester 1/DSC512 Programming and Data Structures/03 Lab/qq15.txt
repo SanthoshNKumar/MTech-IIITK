@@ -1,0 +1,208 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+struct Node   
+{  
+    struct Node *prev;   
+    int data;  
+    struct Node *next;   
+};
+
+void append(struct Node** head_ref, int _data)
+{
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+ 
+    struct Node* last = *head_ref;
+ 
+    new_node->data = _data;
+ 
+    new_node->next = NULL;
+ 
+    if (*head_ref == NULL) {
+        new_node->prev = NULL;
+        *head_ref = new_node;
+        return;
+    }
+ 
+    while (last->next != NULL)
+        last = last->next;
+ 
+    last->next = new_node;
+
+    new_node->prev = last;
+ 
+    return;
+}
+
+void printLinkedList(struct Node* p){
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+}
+
+int findSize(struct Node* node)
+{
+  int res = 0;
+  while (node != NULL) {
+    res++;
+    node = node->next;
+  }
+  return res;
+}
+
+void deleteNode(struct Node** head_ref, struct Node* del)
+{
+    if (*head_ref == NULL || del == NULL)
+        return;
+ 
+    if (*head_ref == del)
+        *head_ref = del->next;
+ 
+    if (del->next != NULL)
+        del->next->prev = del->prev;
+ 
+    if (del->prev != NULL)
+        del->prev->next = del->next;
+ 
+    free(del);
+}
+
+void deleteNodeAtGivenPos(struct Node** head_ref, int n)
+{
+    if (*head_ref == NULL || n <= 0)
+        return;
+ 
+    struct Node* current = *head_ref;
+    int i;
+ 
+    for (int i = 1; current != NULL && i < n; i++)
+        current = current->next;
+ 
+    if (current == NULL)
+        return;
+ 
+    deleteNode(head_ref, current);
+}
+
+
+int count(struct Node* head, int search_for)
+{
+    struct Node* current = head;
+    int count = 0;
+    while (current != NULL) {
+        if (current->data == search_for)
+            count++;
+        current = current->next;
+    }
+    return count;
+}
+
+
+
+int search(struct Node** head_ref, int x)
+{
+ 
+    struct Node* temp = *head_ref;
+ 
+    int pos = 0;
+ 
+    while (temp->data != x
+           && temp->next != NULL) {
+ 
+        pos++;
+ 
+        temp = temp->next;
+    }
+ 
+    if (temp->data != x)
+        return -1;
+
+    return (pos + 1);
+}
+
+void reverse(struct Node** head_ref)
+{
+    struct Node* temp = NULL;
+    struct Node* current = *head_ref;
+ 
+    while (current != NULL) {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
+    }
+ 
+    if (temp != NULL)
+        *head_ref = temp->prev;
+}
+ 
+int main()
+{
+    struct Node* head = NULL;
+    struct Node* ptr = NULL;
+    
+    int val,val1,val2;
+    
+    scanf("%d",&val);
+    
+    while(val!=-999){
+        append(&head, val);
+        append(&ptr,val);
+        scanf("%d",&val);
+    }
+    
+    printf("\n");
+    // find position for first occrance 
+    int first_occr_pos = search(&head,42);
+    
+    printf("first occrance of 42 position is %d",first_occr_pos);
+    
+    printf("\n");
+
+    // find the position of second element occcurance
+    reverse(&ptr);
+    int second_occr_pos = (findSize(ptr) + 1) - search(&ptr,42);
+    
+    printf("second occrance of 42 position is %d \n",second_occr_pos);
+
+    //printLinkedList(head);
+    
+    int _count = count(head,42);
+    
+    if(_count>1){
+        printf("2 occurrence of 42 found. Where should the deletion occur?\n");
+        int val3;
+        scanf("%d",&val3);
+        
+        if(val3 ==1){
+            
+            if(first_occr_pos == 1){
+                
+                printf("No element before 42");
+            }
+            
+            else{
+                
+                deleteNodeAtGivenPos(&head,first_occr_pos);
+            }
+            
+        }else{
+            
+            deleteNodeAtGivenPos(&head,second_occr_pos);
+        }
+    }
+    
+   printLinkedList(head);
+   
+}

@@ -1,0 +1,61 @@
+Asymptotic notations:
+	Asymptotic notations are the mathematical notations used to describe the running time of an algorithm when the input tends towards a particular value or a limiting value
+	There are mainly three asymptotic notations: 
+		Theta notation, Omega notation and Big-O notation. 
+	These are used to determine the time complexity of algorithm.
+
+Big-O Notation (O-notation) - worst case
+	Big-O notation represents the upper bound of the running time of an algorithm. Thus, it gives the worst case complexity of an algorithm. 
+        It is widely used to analyze an algorithm as we are always interested in the worst case scenario.
+
+Theta Notation (Θ-notation) - average case
+	Theta notation encloses the function from above and below. Since it represents the upper and the lower bound of the running time of an algorithm, 
+        it is used for analyzing the average case complexity of an algorithm.
+
+Omega Notation (Ω-notation) - best case
+	Omega notation represents the lower bound of the running time of an algorithm. Thus, it provides the best case complexity of an algorithm.
+	For any value of n, the minimum time required by the algorithm is given by Omega Ω(f(n)).
+
+Algorithm Analysis:
+	- It is study to provides theoretical estimation for the required resources of an algorithm to solves a specific computational problem, ie calculating efficiency.
+
+Efficiency :  it is related to the input length(number of steps) known as time complexity,volume of memory known as space complexity
+
+Why Algorithm Analysis: 
+	- to knowing the efficiency of an algorithm.
+	- Generally there are multiple approches/method/algorithm to solve one problem statement.algorithm analysis is performed to figure 
+          sout which is the better/ optimum approaches/ method/algorithms out of the options
+
+Types of Complexities?
+
+
+Asymptotic Analysis (Time Complexity or look for Less execution time) :
+	- In mathematial analysis, Asymptotic Analysis of algorithm is method of defining the mathematical boundaries of its run-time performance.
+
+Using Algorithm Analysis, we can easily estimates about the average case,best case and worst case scenario of an algorithm.
+
+Algorithm Analysis analysis is to estimate the time complexity function for arbitarily large input.
+
+Time Complexity : is a computational way to show how (behavior) runtime of a program increases as the size of its input increases.
+
+Time complexity is a Running time of a program as a function of the size of the input.
+
+We achieve the following types of analysis for complexity
+
+	Worst-case: f(n)
+		It is defined by the maximum number of steps taken on any instance of size n.
+
+	Best-case: f(n)
+		It is defined by the minimum number of steps taken on any instance of size n.
+
+	Average-case: f(n)
+		It is defined by the average number of steps taken on any instance of size n.
+
+
+
+
+
+	
+
+
+

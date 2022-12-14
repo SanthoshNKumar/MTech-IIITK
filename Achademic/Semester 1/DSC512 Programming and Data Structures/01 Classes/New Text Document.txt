@@ -1,0 +1,199 @@
+Data Structure
+	- Primitive DS
+		- Integer;Float,Character,Pointer
+	- Non Primitive DS
+
+Non Primitive DS
+	- Linear List
+		- Array
+		- Linked List
+		- Stack
+		- Queue
+	- Non Linear List
+		- Graph
+		- Trees
+Algorithm
+
+Dynamic Memory Allocation
+	- malloc()
+	- calloc()
+	- free()
+	- realloc()
+
+Structure Pointer
+
+Arrays and Linked List
+
+Linked List
+	- Single Linked List
+	- Doubly linked List
+
+Algorithms and Order of Growth
+
+Algorithms Analysis
+	- Predicting required resources for the algorithms
+	- Resrources includes
+		- Momery
+		- Communication bandwidth
+		- Programming cost
+		- Computational Time
+
+	- Running Time
+		- Processing power of the computation
+		- Capability of the compiler
+		- Speed of memory access
+		- Input to the algorithm
+
+Mathematical Notations
+	- Big O Notations(O)
+		- Represent the exact bound 'or' exact uper bound
+	- Theta Notation()
+		- Represent the exact bound
+	- Omega Notation
+		- Represent the eact bound 'or' lower bound
+
+Queues
+  - Insertion
+  - Deletion
+  - Array Implementation of Queues
+  - Types of Queues
+      - Multiple Queues
+      - Circular Queue
+      - Deque
+      - Priority Queue
+
+Circular Queue : Operations
+   - Insertion
+   - Deletion
+ 
+Dequeues
+
+Priority Queues
+
+
+Analyzing Code Snippets
+  - Asymptotic Notations
+	- Big O notation: asymptotic “less than”
+		- f(n) = O (g(n)) => f(n) "<=" g(n)
+        - Theta Θ notation: asymptotic “equality”: f(n)
+		- f(n) = Θ (g(n)) => f(n) "=" g(n)
+        - Omega Ω notation: asymptotic “greater than”
+		- f(n) = Ω (g(n)) => f(n) ">=" g(n)
+
+o-Notation
+  - 
+
+Determining Complexities
+	- Linear
+	- Iteration
+	- Function Call
+	- Recursion
+
+Analyzing Complexity for Recursive Functions     ***************************
+	- 
+
+
+Binary Tree and Traversal
+	- Trees
+	- Binary Tree
+	- Binary Tree Representation 
+		- Full Binaty Tree
+		- Complete Binary Tree
+		- Perfect Binary Tree
+	- Expression Tree
+	- Creating Binary Tree From General Tree
+	- Binary Tree Traversal
+	- Binary Tree Traversal : Pre-order Traversal
+	- Binary Tree Traversal : In-order Traversal
+	- Binary Tree Traversal : Post-order Traversal
+	- Binary Tree Traversal : Level-order Traversal
+	- Construting Binary Tree from Traversal Results
+
+Binary Search Tree
+	- Binary Search Tree
+	- Building a Binary Search Tree
+	- Searching for a Node in Binary search tree
+	- Inserting a Node into Binary Search Tree
+	- Deleting a Node from Binary Search tree
+	- Mirror Image of a Binary Seach tree
+	- Smallest element in a Binary Search tree
+	- Largest element in a Binary Search tree
+	- Deleting the Binary Search tree
+	
+Huffman's Tree
+	- 
+
+Analysing Complexity for Recursive Functions
+	- Recurssion Tree
+
+Space Complexity and Auxiliary Space
+	- 
+
+Randomized Algorithms
+	- Deterministic Algorithm
+	- Non-Deterministic Algorithm
+	- 
+
+Binary Heap
+	- Min Heap
+	- Max heap
+	- Building Max heap
+	- Insertng a new element in a binary heap
+	- Building a Max Heap
+	- Deleting an Element from Binary Heap
+	- Heap Sort
+	- Heap Sort Complexity
+	- Searching in Binary heap
+
+Hashing 
+	- Applications of Hashing		
+	- Direct Address Table
+	- Hash functions
+	- Hash functions and Collisons
+	- Collision Resolution
+		- Chaning(Open Hasing)
+		- Open Addressing (Closed Addressing)
+			- Linear Probing
+			- Quadratic Probing
+			- Double Hashing
+	- Birthday Paradox
+	- Chaining Vs Open Addressing
+
+AVL Trees
+	- Searching in AVL tree
+	- Insertion of a new node into AVL tree
+	- Insertion into AVL Tree : LL Case
+	- Insertion into AVL Tree : RR Case
+	- Insertion into AVL Tree : LR Case
+	- Insertion into AVL Tree : RL Case
+	- Deletion from AVL tree
+	- Deletion from AVL tree : R0 Rotation
+	- Deletion from AVL tree : R1 Rotation
+
+
+Graphs and Dijkstra's Shortest Path Algorithm
+	- Graph
+	- Some Applications of Graphs
+	- Graph Represention	
+		- Adjacency Matrix
+		- Adjacency List
+	- Weighted Graphs
+	- Shortest Path Problem
+	- Why Shortest path Algorithms?
+	- Dijkstra's Shortest Path Algorithm
+	- Actual Vs Amortised Cost
+
+Minimum Spanning Tree
+	- Undirected Graphs
+	- Trees
+	- Graphs
+	- Graphs Representation
+	- Cable Laying Problem
+	- Spanning Tree
+	- Minimum Spanning Tree
+	- Prim's Algorithms
+	- Application of Minimum-Cost Spanning Tree
+	- Algorithm Design Techniques
+	- Dynamic Programming 
+	- Dynamic Programming Applications
+	- 

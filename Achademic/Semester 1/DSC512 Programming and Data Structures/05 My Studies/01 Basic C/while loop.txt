@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main()
+{
+    int val_check;
+    
+    do{
+        scanf("%d",&val_check);
+        
+        if(val_check != NULL){
+            
+            printf("%d ",val_check);
+        }
+    }while(val_check != NULL);
+  
+  
+    return 0;
+}
+
+
+
+-------------------------------------------------------
+
+ while(val!=-999){
+        scanf("%d",&val);
+    }
+
+-------------------------------------------------------
+    
+    do{
+        
+        scanf("%d",&val);
+        
+    }while(val!= -999);
+
+
+-------------------------------------------------------
+    

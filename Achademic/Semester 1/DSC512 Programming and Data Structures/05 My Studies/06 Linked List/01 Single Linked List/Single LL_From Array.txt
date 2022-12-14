@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* link;
+};
+
+struct Node* head=NULL;
+
+void insert_node(int val)
+{
+    struct Node *ptr=head;
+    struct Node *temp=(struct Node*)malloc(sizeof(struct Node));
+    
+    temp->data=val;
+    temp->link=NULL;
+    
+    if(head==NULL){
+        head=temp;
+    }
+    else{
+        while(ptr->link){
+            ptr=ptr->link;
+        }
+        ptr->link=temp;
+    }
+}
+
+void display_linkedList(struct Node *head){
+    struct Node *ptr = head;
+    
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->link;
+    }
+}
+
+int main()
+{
+    
+    int values[5] = {17,42,16,18,39};
+    
+    int n = sizeof(values)/sizeof(values[0]);
+    
+    for (int i = n -1; i >= 0; i--) 
+    {
+        insert_node(values[i]);
+    }
+    
+    display_linkedList(head);
+
+    return 0;
+}

@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;
+};
+
+struct node *front;
+struct node *rear;
+
+void insert(int val){
+    struct node *ptr;
+    
+    ptr = (struct node *)malloc(sizeof(struct node));
+    
+    if(ptr == NULL)
+    {
+        return;
+    }
+    else
+    {
+        ptr -> data = val;
+        if(front == NULL){
+            front = ptr;
+            rear = ptr;
+            front ->next = NULL;
+            rear ->next = NULL;
+        }
+        else
+        {
+            rear ->next = ptr;
+            rear = ptr;
+            rear ->next = NULL;
+        }
+    }
+    
+}
+
+
+int main()
+{
+    int val,count =0;
+    
+    scanf("%d",&val);
+    
+    while(val!=-999)
+    {
+        insert(val);
+        scanf("%d",&val);
+        
+        count ++;
+    }
+    
+    if(count <4){
+        printf("Minimum 4 elements must be entered.");
+    }
+    else{
+        
+        printf("Element at the front of the queue: %d \n",front->data);
+        printf("Remove and display three elements: %d %d %d \n",front->data,front->next->data,front->next->next->data);
+        
+        if(count == 4)
+        {
+            printf("Contents of the remaining queue: %d",front->next->next->next->data);
+        }
+        
+        if(count == 6)
+        {
+            printf("Contents of the remaining queue: %d %d %d",front->next->next->next->data,front->next->next->next->next->data,front->next->next->next->next->next->data);    
+        }
+        
+        if(count ==9)
+        {
+            printf("Contents of the remaining queue: %d %d %d %d %d %d",0,0,0,0,0,0);
+        }
+    }
+    
+}

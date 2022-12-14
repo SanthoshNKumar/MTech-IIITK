@@ -1,0 +1,22 @@
+Types of Traversal of Binary Tree
+There are three types of traversal of a binary tree.
+
+	1. Inorder tree traversal
+	2. Preorder tree traversal
+	3. Postorder tree traversal
+
+Inorder : LNR  (Left-Node-Right)
+	1. Traverse the left subtree, i.e., call Inorder(left->subtree)
+	2. Visit the root.
+	3. Traverse the right subtree, i.e., call Inorder(right->subtree)
+
+Preorder : NLR (Node-Left-Right)
+	1. Visit the root.
+	2. Traverse the left subtree, i.e., call Preorder(left->subtree)
+	3. Traverse the right subtree, i.e., call Preorder(right->subtree) 
+	
+Postorder : LRN  (Left-Right-Node)
+	1. Traverse the left subtree, i.e., call Postorder(left->subtree)
+	2. Traverse the right subtree, i.e., call Postorder(right->subtree)
+	3. Visit the root
+
